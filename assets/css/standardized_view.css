@@ -1,0 +1,621 @@
+/* Fix for unit and rate field collapse in production tables */
+.unit-cell, .rate-cell {
+    min-width: 90px !important;
+    white-space: nowrap !important;
+}
+
+.table-input.loading-unit, .table-input.unloading-unit, .table-input.loading-rate, .table-input.unloading-rate {
+    min-width: 70px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    display: inline-block !important;
+}
+
+@media (max-width: 768px) {
+    .unit-cell, .rate-cell {
+        min-width: 60px !important;
+    }
+    .table-input.loading-unit, .table-input.unloading-unit, .table-input.loading-rate, .table-input.unloading-rate {
+        min-width: 50px !important;
+    }
+}
+/* Standardized View/Listing Page CSS - Based on view_sales design */
+/* This CSS will be applied to all view/listing pages for consistent styling */
+
+/* Enhanced View Styling - Aligned with Financial Report */
+.view-page, .listing-page, .main {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* Report Header */
+.report-header, .widget-header, .search_header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    margin-bottom: 20px !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+    text-align: center !important;
+    font-weight: 600 !important;
+}
+
+/* Search Panel Enhanced */
+.search_panel {
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    margin-bottom: 20px !important;
+    overflow: hidden !important;
+}
+
+.search_conent, .widget-content {
+    padding: 20px !important;
+}
+
+/* Filter Panel Enhanced Alignment */
+.search_panel .row {
+    display: flex !important;
+    align-items: flex-end !important;
+    gap: 15px !important;
+    flex-wrap: wrap !important;
+    margin: 0 !important;
+}
+
+.search_panel .row > div {
+    margin-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.search_panel .form-group {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 55px !important;
+    justify-content: space-between !important;
+}
+
+.search_panel .control-label {
+    margin-bottom: 5px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #2c3e50 !important;
+    white-space: nowrap !important;
+}
+
+.search_panel .form-control, .search_panel select {
+    height: 34px !important;
+    padding: 6px 12px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    font-size: 13px !important;
+    transition: border-color 0.3s, box-shadow 0.3s !important;
+}
+
+.search_panel .form-control:focus, .search_panel select:focus {
+    border-color: #007bff !important;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+    outline: none !important;
+}
+
+.search_panel .btn {
+    height: 34px !important;
+    padding: 0 16px !important;
+    border-radius: 4px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+/* Summary Metrics */
+.summary-metrics {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    border-left: 4px solid;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.metric-card.success { border-left-color: #28a745; }
+.metric-card.info { border-left-color: #17a2b8; }
+.metric-card.warning { border-left-color: #ffc107; }
+.metric-card.danger { border-left-color: #dc3545; }
+
+.metric-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.metric-label {
+    font-size: 14px;
+    color: #6c757d;
+    margin: 0;
+}
+
+.metric-subtitle {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+/* DataTables Enhanced Styling */
+.dataTables_wrapper {
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    overflow: hidden !important;
+}
+
+/* Top Controls Styling */
+.top-controls {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    padding: 15px 20px !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+}
+
+.left-controls, .center-controls, .right-controls {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+/* Length Menu (Show entries dropdown) */
+.dataTables_length {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.dataTables_length label {
+    color: #2c3e50 !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.dataTables_length select {
+    background: white !important;
+    border: 2px solid #007bff !important;
+    border-radius: 6px !important;
+    padding: 6px 12px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #2c3e50 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    min-width: 80px !important;
+}
+
+/* Search Box Styling */
+.dataTables_filter {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.dataTables_filter label {
+    color: #2c3e50 !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.dataTables_filter input {
+    background: white !important;
+    border: 2px solid #28a745 !important;
+    border-radius: 25px !important;
+    padding: 8px 16px !important;
+    font-size: 13px !important;
+    width: 250px !important;
+    transition: all 0.3s ease !important;
+    padding-left: 40px !important;
+}
+
+.dataTables_filter input:focus {
+    border-color: #20c997 !important;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25) !important;
+    outline: none !important;
+    width: 300px !important;
+}
+
+/* Bottom Controls Styling */
+.bottom-controls {
+    background: #f8f9fa !important;
+    padding: 15px 20px !important;
+    border-top: 1px solid #dee2e6 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+}
+
+/* Info Styling */
+.dataTables_info {
+    color: #495057 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%) !important;
+    padding: 8px 16px !important;
+    border-radius: 20px !important;
+    border: 1px solid #90caf9 !important;
+}
+
+/* Pagination Styling */
+.dataTables_paginate {
+    display: flex !important;
+    gap: 5px !important;
+}
+
+.dataTables_paginate .paginate_button {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+    border: 2px solid #dee2e6 !important;
+    color: #495057 !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    min-width: 40px !important;
+    text-align: center !important;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+    border-color: #0056b3 !important;
+    color: white !important;
+}
+
+.dataTables_paginate .paginate_button.current {
+    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%) !important;
+    border-color: #1e7e34 !important;
+    color: white !important;
+}
+
+/* Enhanced Table Styling - Matching Sales View Design */
+.table, #form_table, .table-striped, .table-bordered, .table-hover {
+    background: white !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    margin-bottom: 20px !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+.table thead th, #form_table thead th {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    padding: 12px 8px !important;
+    font-size: 12px !important;
+    position: relative !important;
+}
+
+.table tbody td, #form_table tbody td {
+    padding: 10px 8px !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    border-left: none !important;
+    border-right: none !important;
+    vertical-align: middle !important;
+    transition: all 0.2s ease !important;
+    font-size: 12px !important;
+}
+
+.table tbody tr:hover, #form_table tbody tr:hover {
+    background-color: #f0f8ff !important;
+    transform: scale(1.001) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.table tfoot th, #form_table tfoot th {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    padding: 12px 8px !important;
+    font-size: 13px !important;
+}
+
+/* Financial columns styling */
+.amount-positive, .text-success {
+    color: #28a745 !important;
+    font-weight: bold !important;
+}
+
+.amount-negative, .text-danger {
+    color: #dc3545 !important;
+    font-weight: bold !important;
+}
+
+.amount-zero, .text-muted {
+    color: #6c757d !important;
+}
+
+/* Status badges */
+.status-badge, .badge {
+    padding: 4px 12px !important;
+    border-radius: 20px !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    display: inline-block !important;
+}
+
+.status-paid, .badge-success {
+    background: #d4edda !important;
+    color: #155724 !important;
+    border: 1px solid #c3e6cb !important;
+}
+
+.status-unpaid, .badge-danger {
+    background: #f8d7da !important;
+    color: #721c24 !important;
+    border: 1px solid #f5c6cb !important;
+}
+
+.status-partial, .badge-warning {
+    background: #fff3cd !important;
+    color: #856404 !important;
+    border: 1px solid #ffeaa7 !important;
+}
+
+.status-deleted {
+    background: #f8d7da !important;
+    color: #721c24 !important;
+    border: 1px solid #f5c6cb !important;
+}
+
+/* Enhanced styling for special columns */
+.financial-header {
+    background-color: #f0f8ff !important;
+    color: #2c3e50 !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    border: 2px solid #dee2e6 !important;
+}
+
+.financial-cell-subtotal {
+    background-color: #e8f5e8 !important;
+    color: #27ae60 !important;
+    font-weight: bold !important;
+    text-align: right !important;
+}
+
+.financial-cell-transport {
+    background-color: #fff3cd !important;
+    color: #856404 !important;
+    font-weight: bold !important;
+    text-align: right !important;
+}
+
+.financial-cell-loading {
+    background-color: #fff3cd !important;
+    color: #856404 !important;
+    font-weight: bold !important;
+    text-align: right !important;
+}
+
+.financial-cell-total {
+    background-color: #d1ecf1 !important;
+    color: #0c5460 !important;
+    font-weight: bold !important;
+    text-align: right !important;
+}
+
+.financial-cell-paid {
+    background-color: #d4edda !important;
+    color: #155724 !important;
+    font-weight: bold !important;
+    text-align: right !important;
+}
+
+.financial-cell-balance {
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+    font-weight: bold !important;
+    text-align: right !important;
+}
+
+/* Table row striping with enhanced colors */
+.table-striped tbody tr:nth-of-type(odd) td {
+    background-color: rgba(0,0,0,.02) !important;
+}
+
+.table-striped tbody tr:nth-of-type(even) td {
+    background-color: rgba(0,0,0,.00) !important;
+}
+
+/* Enhanced table borders */
+.table-bordered {
+    border: 1px solid #dee2e6 !important;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6 !important;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+    border-bottom-width: 2px !important;
+}
+
+/* Action buttons */
+.action-btn, .btn {
+    padding: 6px 12px !important;
+    margin: 0 2px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+    color: white !important;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%) !important;
+    color: white !important;
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #17a2b8 0%, #117a8b 100%) !important;
+    color: white !important;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ffc107 0%, #d39e00 100%) !important;
+    color: #212529 !important;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #bd2130 100%) !important;
+    color: white !important;
+}
+
+.btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+}
+
+/* Status badges */
+.status-badge, .alert {
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    margin-bottom: 15px !important;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
+    color: #155724 !important;
+    border: 1px solid #c3e6cb !important;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%) !important;
+    color: #721c24 !important;
+    border: 1px solid #f5c6cb !important;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%) !important;
+    color: #856404 !important;
+    border: 1px solid #ffeaa7 !important;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%) !important;
+    color: #0c5460 !important;
+    border: 1px solid #bee5eb !important;
+}
+
+/* Widget Styling */
+.widget {
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    margin-bottom: 20px !important;
+    overflow: hidden !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .search_panel .row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+    }
+    
+    .table, #form_table {
+        font-size: 11px !important;
+    }
+    
+    .table thead th, .table tbody td, .table tfoot th,
+    #form_table thead th, #form_table tbody td, #form_table tfoot th {
+        padding: 6px 4px !important;
+    }
+    
+    .top-controls {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+    }
+    
+    .left-controls, .center-controls, .right-controls {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+    
+    .dataTables_filter input {
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+    
+    .bottom-controls {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+    
+    .dataTables_paginate {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+}
+
+/* Hide default DataTables controls for cleaner look */
+#form_table_length {
+    display: none !important;
+}
+
+#form_table_info {
+    display: none !important;
+}
+
+#form_table_paginate {
+    display: none !important;
+}

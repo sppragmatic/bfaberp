@@ -1,0 +1,273 @@
+<script>
+$(document).ready(function() {
+    $('#gst_payment_table').DataTable({
+        "responsive": true,
+        "processing": true,
+        "lengthMenu": [
+            [10, 25, 50, 100, 250, -1],
+            [10, 25, 50, 100, 250, "All"]
+        ],
+        "pageLength": 25,
+        "dom": '<"top-controls"<"left-controls"l><"center-controls"><"right-controls"f>>rt<"bottom-controls"<"left-info"i><"right-pagination"p>>',
+        "language": {
+            "lengthMenu": "Show _MENU_ entries",
+            "search": "Search:",
+            "searchPlaceholder": "Search GST payments...",
+            "zeroRecords": "No matching payment records found",
+            "info": "Showing _START_ to _END_ of _TOTAL_ GST payments",
+            "infoEmpty": "No payment records available",
+            "infoFiltered": "(filtered from _MAX_ total payments)",
+            "processing": "Loading GST payment data...",
+            "paginate": {
+                "first": "«",
+                "last": "»",
+                "next": "›",
+                "previous": "‹"
+            },
+            "emptyTable": "No payment data available"
+        },
+        "order": [
+            [2, "desc"]
+        ],
+        "columnDefs": [{
+                "targets": [-1],
+                "orderable": false,
+                "searchable": false,
+                "width": "180px"
+            },
+            {
+                "targets": [3],
+                "className": "text-right",
+                "render": function(data, type, row) {
+                    if (type === 'display' && data && !isNaN(data)) {
+                        return '₹' + parseFloat(data).toLocaleString('en-IN', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        });
+                    }
+                    return data || '₹0.00';
+                }
+            }
+        ]
+    });
+
+    // Initialize Chosen for select dropdowns
+    $('select').chosen({
+        width: '100%',
+        placeholder_text_single: 'Select an option'
+    });
+});
+</script>
+
+
+
+
+
+<style>
+#form_table_length {
+    display: none !important;
+}
+
+#form_table_info {
+    display: none !important;
+}
+
+#form_table_paginate {
+    display: none !important;
+}
+</style>
+
+<div class="main view-page">
+
+    <div class="main-inner">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="span12">
+
+                    <div class="alert alert-success">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Success!</strong> <?php echo $this->session->flashdata('msg'); ?>
+                    </div>
+
+
+                    <div class="widget ">
+                        <div class="widget-header">
+                            <h2>VIEW MONEY RECEIPT</h2>
+                        </div>
+                        <div class="widget-content">
+
+
+                            <form id="user_sch" action="<?php echo site_url("admin/sales/search_payment");?>"
+                                enctype="multipart/form-data" method="post">
+
+                                <!-- <div class="span3">
+      <div class="form-group">
+
+   	<td>
+   	 <label for="text1" class="control-label col-lg-4">Select Party</label>
+   	<select id="type"    name="type">
+   				<option value="0">-Select Product-</option>
+          <?php foreach($products as $prd){ ?>
+   				<option  value="<?php echo $prd['id']; ?>"><?php echo $prd['name']; ?></option>
+   				<?php } ?>
+   					</select></td>
+   </div>
+ </div> -->
+
+
+                                <div class="span3">
+                                    <div class="form-group">
+
+                                        <td>
+                                            <label for="text1" class="control-label col-lg-4">Select Party</label>
+                                            <select id="customer_id" name="customer_id">
+                                                <option value="0">-Select Party-</option>
+                                                <?php foreach($customer as $pr){ ?>
+                                                <option <?php if($pr['id']==$customer_id){ ?> selected="selected"
+                                                    <?php } ?> value="<?php echo $pr['id']; ?>">
+                                                    <?php echo $pr['name']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </td>
+                                    </div>
+                                </div>
+
+                                <div class="span3">
+                                    <div class="form-group">
+                                        <label for="text1" class="control-label col-lg-4">Start Date</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" id="start_date" value="<?php echo $start_date; ?>"
+                                                name="start_date" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+                                <div class="span3">
+                                    <div class="form-group">
+                                        <label for="text1" class="control-label col-lg-4">End Date</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" id="end_date" value="<?php echo $end_date; ?>"
+                                                name="end_date" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="span2"><br />
+                                    <input type="submit" id="tags" value="Search" class="btn btn-primary" />
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <p class="pull-right ">
+
+                        <a href="<?= site_url('admin/sales/add_payment') ?>"><input type="button"
+                                value="New Money Recipt" class="btn btn-primary"> </a>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="gst_payment_table">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center; font-weight: bold;">Receipt No.</th>
+                                    <th style="text-align: center; font-weight: bold;">Customer Name</th>
+                                    <th style="text-align: center; font-weight: bold;">Date</th>
+                                    <th style="text-align: center; font-weight: bold;">Amount (₹)</th>
+                                    <th style="text-align: center; font-weight: bold;">Payment Type</th>
+                                    <th style="text-align: center; font-weight: bold;">Details</th>
+                                    <th style="text-align: center; font-weight: bold;">Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php $sm=1; foreach ($sales as $fm){
+if($fm['debit']!=0){
+  ?>
+                                <tr>
+                                    <td><?php echo $fm['invno'];?></td>
+                                    <td><?php echo $fm['customername'];?></td>
+                                    <td><?php echo $fm['entry_date'];?></td>
+                                    <td class="financial-cell-total">₹<?php echo number_format($fm['debit'], 2);?></td>
+                                    <td style="text-align: center;">
+                                        <?php if($fm['type']==1){ ?>
+                                        <span class="status-badge status-paid">CASH</span>
+                                        <?php } ?>
+                                        <?php if($fm['type']==2){ ?>
+                                        <span class="status-badge badge-warning">CHEQUE</span>
+                                        <?php } ?>
+                                    </td>
+                                    <td><?php echo $fm['details'];?></td>
+                                    <td style="text-align: center;">
+                                        <?php if($fm['status']==0){ ?>
+                                        <a href="<?php echo site_url('admin/sales/edit_payment')."/".$fm['id']; ?>"
+                                            class="action-btn btn-edit" title="Edit Payment">
+                                            <i class="icon-edit"></i> Edit
+                                        </a>
+                                        <a href="<?php echo site_url('admin/sales/delete_payment')."/".$fm['id']; ?>"
+                                            class="action-btn btn-delete" title="Delete Payment"
+                                            onclick="return confirm('Are you sure you want to delete this payment?')">
+                                            <i class="icon-trash"></i> Delete
+                                        </a>
+                                        <a href="<?php echo site_url('admin/sales/receipt')."/".$fm['id']; ?>"
+                                            class="action-btn btn-info" title="Print Receipt">
+                                            <i class="icon-print"></i> Print
+                                        </a>
+                                        <?php }else{ ?>
+                                        DELETED
+                                        <?php } ?>
+
+                                    </td>
+                                </tr>
+                                <?php
+}
+} ?>
+
+
+                            </tbody>
+
+
+                        </table>
+                    </div>
+
+                    <div id="main-table">
+
+
+                        <div class="pull-right">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+$(function() {
+    //	alert("hello")
+    $("#start_date").datepicker({
+        changeMonth: true,
+        changeYear: true,
+    });
+
+    $("#end_date").datepicker({
+        changeMonth: true,
+        changeYear: true,
+    });
+});
+</script>

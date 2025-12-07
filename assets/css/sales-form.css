@@ -1,0 +1,1670 @@
+/* Modern Production-Style Design for Sales Forms */
+
+/* Core Modern Styles */
+.main {
+    min-height: 100vh;
+    padding: 30px 0;
+}
+
+/* Professional Page Header */
+.page-header-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 1px solid #e9ecef;
+}
+
+.page-header-card h1 {
+    color: #2c3e50;
+    margin: 0 0 5px 0;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.page-header-card p {
+    color: #7f8c8d;
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Button Gradients */
+.btn-primary-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-success-gradient {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-success-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+/* Data Table Container */
+.data-table-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 25px;
+    display: block !important;
+    visibility: visible !important;
+    position: relative !important;
+    z-index: 999 !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    /* Debug styling to make it super visible */
+    border: 3px solid red !important;
+    min-height: 200px !important;
+}
+
+.table-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.table-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.table-controls span {
+    color: #ffffff !important;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 14px !important;
+}
+
+.table-controls strong {
+    color: #fff3cd !important;
+    font-size: 16px !important;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+/* Enhanced Alert Styles */
+.alert-success-modern {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border: none;
+    border-left: 5px solid #28a745;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.1);
+}
+
+.alert-error-modern {
+    background: linear-gradient(135deg, #f8d7da 0%, #f1b0b7 100%);
+    border: none;
+    border-left: 5px solid #dc3545;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+}
+
+.alert-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.alert-success-modern .alert-icon {
+    color: #28a745;
+}
+
+.alert-error-modern .alert-icon {
+    color: #dc3545;
+}
+
+.alert-content {
+    flex: 1;
+}
+
+.alert-content strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.alert-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.alert-close:hover {
+    opacity: 1;
+}
+
+/* Form Styles */
+.form-group-modern {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-label-modern {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-label-modern i {
+    color: #667eea;
+    font-size: 16px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.form-control-modern {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: white;
+    display: block;
+    box-sizing: border-box;
+}
+
+.form-control-modern:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+}
+
+.readonly-input {
+    background: #f8f9fa !important;
+    cursor: not-allowed;
+}
+
+.input-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-size: 16px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Modern Sales Form Styling */
+.table-modern {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.table-modern th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    padding: 12px 15px;
+    text-align: left;
+    border: none;
+    font-size: 13px;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+.table-modern td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: top;
+}
+
+.table-modern tr:last-child td {
+    border-bottom: none;
+}
+
+.table-modern input,
+.table-modern select,
+.table-modern textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e1e5e9;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 1.4;
+    background-color: #fff;
+    color: #333;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    min-height: 45px;
+}
+
+/* Enhanced select box styling */
+.table-modern select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    padding-right: 40px;
+    cursor: pointer;
+    color: #333 !important;
+}
+
+/* Select option styling */
+.table-modern select option {
+    color: #333;
+    background-color: #fff;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+/* Ensure placeholder/default options are visible */
+.table-modern select option[value=""] {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.table-modern select::-ms-expand {
+    display: none;
+}
+
+.table-modern input:focus,
+.table-modern select:focus,
+.table-modern textarea:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+    outline: none;
+    background-color: #fafbfc;
+}
+
+.table-modern input:hover,
+.table-modern select:hover,
+.table-modern textarea:hover {
+    border-color: #c1c7cd;
+}
+
+.table-modern input[readonly] {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+.table-modern input[readonly]:focus {
+    box-shadow: none;
+    border-color: #e1e5e9;
+    background-color: #f8f9fa;
+}
+
+.table-modern textarea {
+    resize: vertical;
+    min-height: 80px;
+    padding: 15px 14px;
+}
+
+/* Ensure consistent form control heights */
+.table-modern input[type="text"],
+.table-modern input[type="number"],
+.table-modern input[type="email"],
+.table-modern input[type="tel"] {
+    height: 45px;
+}
+
+.table-modern select:not([multiple]) {
+    min-height: 45px;
+    height: auto;
+    line-height: 1.4;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+}
+
+/* Customer selection enhancement */
+.chosen-container {
+    width: 100% !important;
+    font-size: 14px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.chosen-container-single .chosen-single {
+    padding: 12px 14px !important;
+    border: 1px solid #e1e5e9 !important;
+    border-radius: 6px !important;
+    background: white !important;
+    height: 45px !important;
+    line-height: 21px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+    min-height: 45px !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #333 !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+}
+
+.chosen-container-single .chosen-single:hover {
+    border-color: #c1c7cd;
+}
+
+.chosen-container-active.chosen-with-drop .chosen-single {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: #fafbfc;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.chosen-container-single .chosen-single div {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+}
+
+.chosen-container-single .chosen-single div b {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>') no-repeat center;
+    background-size: 12px;
+    width: 12px;
+    height: 12px;
+    display: block;
+}
+
+.chosen-container-single .chosen-single span {
+    margin-right: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    color: #333 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    height: 100% !important;
+}
+
+/* Chosen dropdown list styling */
+.chosen-container .chosen-drop {
+    border: 2px solid #667eea !important;
+    border-top: 1px solid #e9ecef !important;
+    border-radius: 0 0 8px 8px !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+    background: white !important;
+    z-index: 9999 !important;
+    margin-top: -1px !important;
+}
+
+/* Search highlight styling */
+.chosen-container .chosen-results li em {
+    background: #fff3cd !important;
+    color: #856404 !important;
+    font-style: normal !important;
+    font-weight: bold !important;
+    padding: 0 2px !important;
+    border-radius: 2px !important;
+}
+
+.chosen-container .chosen-results {
+    max-height: 250px !important;
+    overflow-y: auto !important;
+    font-size: 14px !important;
+}
+
+.chosen-container .chosen-results li {
+    padding: 12px 15px !important;
+    border-bottom: 1px solid #f1f3f4 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    color: #333 !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+}
+
+.chosen-container .chosen-results li:hover,
+.chosen-container .chosen-results li.highlighted {
+    background-color: #667eea !important;
+    color: white !important;
+}
+
+.chosen-container .chosen-results li.result-selected {
+    background-color: #28a745 !important;
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+/* FORCE search field to always appear - Critical CSS */
+.chosen-container .chosen-search {
+    display: block !important; /* Force search field to be visible */
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin: 8px !important;
+    position: relative !important;
+    background: white !important;
+    border-radius: 10px !important;
+    padding: 0 !important;
+    min-height: 48px !important;
+}
+
+/* Ensure search field appears in dropdown */
+.chosen-container.chosen-with-drop .chosen-drop {
+    display: block !important;
+}
+
+.chosen-container.chosen-with-drop .chosen-drop .chosen-search {
+    display: block !important;
+    margin: 8px !important;
+}
+
+.chosen-container .chosen-search input[type="text"] {
+    width: calc(100% - 8px) !important;
+    padding: 12px 45px 12px 15px !important;
+    border: 2px solid #e9ecef !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+    background: white !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    color: #333 !important;
+    min-height: 44px !important;
+}
+
+.chosen-container .chosen-search input[type="text"]:focus {
+    border-color: #3498db !important;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1) !important;
+    outline: none !important;
+}
+
+.chosen-container .chosen-search input[type="text"]::placeholder {
+    color: #6c757d !important;
+    opacity: 0.7 !important;
+}
+
+/* Contact validation styles */
+.validation-message {
+    font-size: 12px;
+    margin-top: 5px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    min-height: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.validation-message.text-info {
+    color: #31708f;
+    background: linear-gradient(135deg, #d9edf7 0%, #bce8f1 100%);
+    border: 1px solid #bce8f1;
+}
+
+.validation-message.text-success {
+    color: #3c763d;
+    background: linear-gradient(135deg, #dff0d8 0%, #c3e6cb 100%);
+    border: 1px solid #d6e9c6;
+}
+
+.validation-message.text-warning {
+    color: #8a6d3b;
+    background: linear-gradient(135deg, #fcf8e3 0%, #faebcc 100%);
+    border: 1px solid #faebcc;
+}
+
+.validation-message.text-danger {
+    color: #a94442;
+    background: linear-gradient(135deg, #f2dede 0%, #ebccd1 100%);
+    border: 1px solid #ebccd1;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.party-found {
+    background-color: #dff0d8 !important;
+    border-color: #d6e9c6 !important;
+}
+
+.party-not-found {
+    background-color: #fcf8e3 !important;
+    border-color: #faebcc !important;
+}
+
+#contact_no:focus {
+    border-color: #3498db;
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Total Row Styling */
+.total-row {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e9ecef 100%);
+    font-weight: bold;
+    border-top: 2px solid #ddd;
+}
+
+.total-row td {
+    padding: 20px 15px;
+    font-size: 16px;
+}
+
+.total-row input {
+    font-weight: bold;
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
+    border: 2px solid #28a745 !important;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Customer Selection Toggle Styling */
+#cn, #cid {
+    padding: 20px;
+    background: rgba(248, 249, 255, 0.5);
+    border-radius: 12px;
+    margin-top: 10px;
+    border: 1px solid #e9ecef;
+}
+
+/* Ensure customer dropdown is visible by default */
+#cid {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+    border: 1px solid #ddd !important;
+    padding: 10px !important;
+    margin: 5px 0 !important;
+}
+
+/* Ensure the select element itself is visible */
+#customer_id {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    min-height: 35px !important;
+}
+
+/* Hide new customer form by default */
+#cn {
+    display: none !important;
+}
+
+#cn .form-group,
+#cid .form-group {
+    margin-bottom: 15px;
+}
+
+#cn .form-group:last-child,
+#cid .form-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Toggle links styling */
+a[onclick] {
+    color: #3498db;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 50%;
+    background: rgba(52, 152, 219, 0.1);
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+a[onclick]:hover {
+    background: rgba(52, 152, 219, 0.2);
+    transform: scale(1.1);
+}
+
+/* Date picker input styling */
+#date {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: white;
+    cursor: pointer;
+}
+
+#date:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    outline: none;
+}
+
+/* Ensure no duplicate customer dropdowns */
+#customer_id_chosen {
+    width: 100% !important;
+}
+
+/* Hide any potential duplicate chosen containers */
+#cid .chosen-container:not(:first-child) {
+    display: none !important;
+}
+
+/* Required field indicator styling */
+th:contains('*') {
+    position: relative;
+}
+
+th {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+th:contains('*')::after {
+    content: '';
+    color: #e74c3c;
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+/* Payment Details Section Styling */
+.pmdetails {
+    display: none;
+}
+
+.pmdetails input,
+.pmdetails textarea,
+.pmdetails select {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.pmdetails input:focus,
+.pmdetails textarea:focus,
+.pmdetails select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    outline: none;
+}
+
+/* Radio Button Styling */
+.pmdetails input[type="radio"] {
+    width: auto !important;
+    margin-right: 8px;
+    transform: scale(1.2);
+}
+
+.pmdetails label {
+    margin-right: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Form control select styling */
+select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    padding-right: 40px;
+    cursor: pointer;
+    min-height: 44px;
+}
+
+select.form-control::-ms-expand {
+    display: none;
+}
+
+select.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+    outline: none;
+    background-color: #fafbfc;
+}
+
+select.form-control:hover {
+    border-color: #c1c7cd;
+}
+
+/* Radio button styling */
+input[type="radio"] {
+    width: auto !important;
+    margin-right: 5px;
+}
+
+/* Date picker styling */
+input[type="text"]#date {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+    height: 45px !important;
+    min-height: 45px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Ensure all form controls have consistent alignment */
+.table-modern td {
+    vertical-align: middle !important;
+}
+
+.table-modern td > div,
+.table-modern td > input,
+.table-modern td > select,
+.table-modern td > textarea,
+.table-modern td > .chosen-container {
+    margin: 0 !important;
+    vertical-align: middle !important;
+}
+
+/* Number input styling */
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Placeholder styling */
+.table-modern input::placeholder,
+.table-modern textarea::placeholder {
+    color: #9ca3af;
+    opacity: 1;
+    font-style: italic;
+}
+
+/* Validation message styling */
+.validation-message {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.text-muted {
+    color: #6c757d;
+    font-size: 12px;
+}
+
+/* Success and error states */
+.table-modern input.is-valid {
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.table-modern input.is-invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+/* Field group spacing */
+.table-modern tr {
+    background-color: white;
+}
+
+.table-modern tr:nth-child(even) {
+    background-color: #fafbfc;
+}
+
+.table-modern tr:hover {
+    background-color: #f1f3f4;
+}
+
+/* Widget styling to match modern design */
+.widget {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.widget-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 25px;
+}
+
+.widget-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+}
+
+/* Submit Section */
+.submit-section-container {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fff8 100%);
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-top: 25px;
+}
+
+.submit-buttons {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.submit-help-text {
+    color: #6c757d;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.submit-help-text i {
+    color: #3498db;
+    margin-right: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main {
+        padding: 15px 0;
+    }
+    
+    .page-header-card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .data-table-container {
+        margin-bottom: 15px;
+    }
+    
+    .table-header {
+        padding: 15px;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    /* Responsive styles for Sales Information Table ONLY */
+    .sales-info-table {
+        display: block;
+        width: 100%;
+        overflow: visible;
+    }
+    
+    .sales-info-table tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #e1e5e9;
+        border-radius: 8px;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        padding: 0;
+    }
+    
+    .sales-info-table th,
+    .sales-info-table td {
+        display: block;
+        width: 100%;
+        padding: 12px 15px;
+        text-align: left;
+        border: none;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+    
+    .sales-info-table th {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: 600;
+        margin: 0;
+        border-radius: 0;
+        font-size: 13px;
+        padding: 10px 15px;
+    }
+    
+    .sales-info-table th:first-child {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    
+    .sales-info-table td {
+        background: white;
+        border-bottom: 1px solid #f8f9fa;
+        padding: 12px 15px;
+    }
+    
+    .sales-info-table td:last-child {
+        border-bottom: none;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    
+    /* Form elements in mobile view for sales info table only */
+    .sales-info-table input,
+    .sales-info-table select,
+    .sales-info-table textarea {
+        width: 100%;
+        margin-top: 5px;
+        font-size: 16px; /* Prevent zoom on iOS */
+        padding: 12px 15px;
+        border-radius: 8px;
+        min-height: 48px;
+        height: auto;
+        line-height: 1.4;
+        color: #333 !important;
+        background-color: #fff !important;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Mobile select options */
+    .sales-info-table select option {
+        color: #333 !important;
+        background-color: #fff !important;
+        font-size: 16px;
+    }
+    
+    /* Special handling for radio buttons in sales info table */
+    .sales-info-table input[type="radio"] {
+        width: auto;
+        margin-right: 8px;
+        margin-top: 0;
+        display: inline-block;
+    }
+    
+    /* Fix alignment for payment fields with pmdetails class */
+    .sales-info-table th.pmdetails,
+    .sales-info-table td.pmdetails {
+        display: block !important;
+        width: 100% !important;
+        padding: 12px 15px !important;
+        text-align: left !important;
+        border: none !important;
+        font-size: 14px !important;
+        box-sizing: border-box !important;
+    }
+    
+    .sales-info-table th.pmdetails {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        color: white !important;
+        font-weight: 600 !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        font-size: 13px !important;
+        padding: 10px 15px !important;
+    }
+    
+    .sales-info-table td.pmdetails {
+        background: white !important;
+        border-bottom: 1px solid #f8f9fa !important;
+        padding: 12px 15px !important;
+    }
+    
+    /* Ensure payment fields show/hide properly in responsive */
+    .sales-info-table th.pmdetails[style*="display:none"],
+    .sales-info-table td.pmdetails[style*="display:none"] {
+        display: none !important;
+    }
+    
+    /* Keep other table-modern styles unchanged for item details */
+    .table-modern:not(.sales-info-table) th,
+    .table-modern:not(.sales-info-table) td {
+        padding: 10px;
+        font-size: 12px;
+    }
+    
+    .submit-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-primary-gradient,
+    .btn-success-gradient {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Tablet Responsive Design - Sales Information Table Only */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sales-info-table {
+        font-size: 13px;
+    }
+    
+    .sales-info-table th,
+    .sales-info-table td {
+        padding: 10px 12px;
+    }
+    
+    .sales-info-table th {
+        font-size: 12px;
+    }
+}
+
+/* Desktop Enhanced Styles - Sales Information Table Only */
+@media (min-width: 1025px) {
+    .sales-info-table {
+        table-layout: fixed;
+    }
+    
+    /* 4-column layout optimization for sales info table */
+    .sales-info-table th:nth-child(1),
+    .sales-info-table td:nth-child(1) {
+        width: 20%;
+        font-weight: 600;
+    }
+    
+    .sales-info-table th:nth-child(2),
+    .sales-info-table td:nth-child(2) {
+        width: 30%;
+    }
+    
+    .sales-info-table th:nth-child(3),
+    .sales-info-table td:nth-child(3) {
+        width: 20%;
+        font-weight: 600;
+    }
+    
+    .sales-info-table th:nth-child(4),
+    .sales-info-table td:nth-child(4) {
+        width: 30%;
+    }
+    
+    /* Add subtle borders between columns in sales info table */
+    .sales-info-table th:not(:last-child),
+    .sales-info-table td:not(:last-child) {
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .sales-info-table td:not(:last-child) {
+        border-right: 1px solid #f1f3f4;
+    }
+}
+
+/* Modern Form Control Alignment Classes */
+.modern-input,
+.modern-select,
+.modern-textarea {
+    width: 100% !important;
+    height: 45px !important;
+    min-height: 45px !important;
+    padding: 12px 14px !important;
+    border: 1px solid #e1e5e9 !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    font-family: inherit !important;
+    line-height: 1.4 !important;
+    background-color: #fff !important;
+    color: #333 !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    display: flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+}
+
+.modern-textarea {
+    height: auto !important;
+    min-height: 80px !important;
+    resize: vertical !important;
+    display: block !important;
+    align-items: flex-start !important;
+    padding: 15px 14px !important;
+}
+
+/* Modern select specific styling */
+.modern-select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>') !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 12px !important;
+    padding-right: 40px !important;
+    cursor: pointer !important;
+}
+
+/* Focus states for modern controls */
+.modern-input:focus,
+.modern-select:focus,
+.modern-textarea:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    outline: none !important;
+    background-color: #fafbfc !important;
+}
+
+/* Hover states for modern controls */
+.modern-input:hover,
+.modern-select:hover,
+.modern-textarea:hover {
+    border-color: #c1c7cd !important;
+}
+
+/* Readonly state for modern inputs */
+.modern-input[readonly] {
+    background-color: #f8f9fa !important;
+    color: #6c757d !important;
+    cursor: not-allowed !important;
+}
+
+/* Chosen select container alignment fix */
+.chosen-container.modern-select {
+    height: 45px !important;
+    min-height: 45px !important;
+    display: block !important;
+}
+
+/* Radio button group styling */
+.radio-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.radio-group label:hover {
+    background-color: #f8f9fa;
+}
+
+.radio-group input[type="radio"] {
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 !important;
+    accent-color: #667eea;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"]:checked + span,
+.radio-group label:has(input[type="radio"]:checked) {
+    color: #667eea;
+    font-weight: 600;
+    background-color: rgba(102, 126, 234, 0.1);
+}
+
+/* =================================================================== */
+/* CENTRALIZED TABLE STYLING FOR ALL MODULES (EXCEPT PRODUCTION)      */
+/* =================================================================== */
+
+/* Universal Table Container */
+.table-container,
+.data-table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    margin-bottom: 25px;
+    border: 1px solid #e9ecef;
+}
+
+/* Standard DataTables Styling */
+table.dataTable,
+.table,
+.table-striped,
+.table-bordered,
+.table-hover,
+#dataTables-example {
+    width: 100% !important;
+    border-spacing: 0;
+    border-collapse: separate;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    margin-bottom: 0 !important;
+}
+
+/* Universal Table Headers */
+table.dataTable thead th,
+.table thead th,
+.table th,
+th,
+.modern-table-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 15px 20px !important;
+    text-align: left !important;
+    border: none !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+    position: relative !important;
+    border-bottom: 2px solid rgba(255,255,255,0.2) !important;
+}
+
+/* Table Header Icons */
+table.dataTable thead th:before,
+.table thead th:before,
+.table th:before,
+th:before,
+.modern-table-header:before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Universal Table Body */
+table.dataTable tbody td,
+.table tbody td,
+.table td,
+td {
+    padding: 15px 20px !important;
+    border-bottom: 1px solid #f1f3f4 !important;
+    vertical-align: middle !important;
+    color: #333 !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Row Hover Effects */
+table.dataTable tbody tr:hover,
+.table tbody tr:hover,
+.table tr:hover {
+    background-color: #f8f9fc !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+}
+
+/* Last Row Styling */
+table.dataTable tbody tr:last-child td,
+.table tbody tr:last-child td,
+.table tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* Striped Rows */
+table.dataTable tbody tr:nth-child(even),
+.table-striped tbody tr:nth-child(even) {
+    background-color: #fafbfc !important;
+}
+
+/* Universal Form Controls in Tables */
+table td input,
+table td select,
+table td textarea,
+.table td input,
+.table td select,
+.table td textarea {
+    width: 100% !important;
+    padding: 10px 14px !important;
+    border: 1px solid #e1e5e9 !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    font-family: inherit !important;
+    line-height: 1.4 !important;
+    background-color: #fff !important;
+    color: #333 !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    min-height: 42px !important;
+}
+
+/* Focus States for Table Form Controls */
+table td input:focus,
+table td select:focus,
+table td textarea:focus,
+.table td input:focus,
+.table td select:focus,
+.table td textarea:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    outline: none !important;
+    background-color: #fafbfc !important;
+}
+
+/* Hover States for Table Form Controls */
+table td input:hover,
+table td select:hover,
+table td textarea:hover,
+.table td input:hover,
+.table td select:hover,
+.table td textarea:hover {
+    border-color: #c1c7cd !important;
+}
+
+/* Readonly Fields in Tables */
+table td input[readonly],
+.table td input[readonly] {
+    background-color: #f8f9fa !important;
+    color: #6c757d !important;
+    cursor: not-allowed !important;
+}
+
+/* Select Dropdowns in Tables */
+table td select,
+.table td select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>') !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 12px !important;
+    padding-right: 40px !important;
+    cursor: pointer !important;
+}
+
+/* Textarea in Tables */
+table td textarea,
+.table td textarea {
+    resize: vertical !important;
+    min-height: 70px !important;
+}
+
+/* Button Styling in Tables */
+table td .btn,
+table td button,
+table td input[type="submit"],
+table td input[type="button"],
+.table td .btn,
+.table td button,
+.table td input[type="submit"],
+.table td input[type="button"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: none !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    min-width: 100px !important;
+    text-align: center !important;
+}
+
+/* Button Hover Effects */
+table td .btn:hover,
+table td button:hover,
+table td input[type="submit"]:hover,
+table td input[type="button"]:hover,
+.table td .btn:hover,
+.table td button:hover,
+.table td input[type="submit"]:hover,
+.table td input[type="button"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Action Buttons */
+.btn-edit,
+.btn-delete,
+.btn-view {
+    padding: 8px 15px !important;
+    margin: 0 3px !important;
+    border-radius: 15px !important;
+    font-size: 12px !important;
+    min-width: 80px !important;
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%) !important;
+}
+
+.btn-view {
+    background: linear-gradient(135deg, #17a2b8 0%, #3498db 100%) !important;
+}
+
+/* DataTables Specific Styling */
+.dataTables_wrapper {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.dataTables_length,
+.dataTables_filter,
+.dataTables_info,
+.dataTables_paginate {
+    color: #333 !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+}
+
+.dataTables_length select,
+.dataTables_filter input {
+    border: 1px solid #e1e5e9 !important;
+    border-radius: 6px !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    margin: 0 5px !important;
+}
+
+/* Pagination Styling */
+.dataTables_paginate .paginate_button {
+    background: white !important;
+    border: 1px solid #e1e5e9 !important;
+    color: #667eea !important;
+    padding: 8px 12px !important;
+    margin: 0 2px !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background: #667eea !important;
+    color: white !important;
+    border-color: #667eea !important;
+}
+
+.dataTables_paginate .paginate_button.current {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border-color: #667eea !important;
+}
+
+/* Responsive Table Wrapper */
+.table-responsive {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    border: 1px solid #e9ecef !important;
+}
+
+/* Universal Widget Table Integration */
+.widget .table,
+.widget table,
+.widget-content .table,
+.widget-content table {
+    margin-bottom: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.widget-content {
+    padding: 0 !important;
+}
+
+/* Mobile Responsive Tables */
+@media (max-width: 768px) {
+    table.dataTable thead th,
+    .table thead th,
+    .table th,
+    th {
+        font-size: 11px !important;
+        padding: 10px 8px !important;
+    }
+    
+    table.dataTable tbody td,
+    .table tbody td,
+    .table td,
+    td {
+        font-size: 12px !important;
+        padding: 10px 8px !important;
+    }
+    
+    table td input,
+    table td select,
+    table td textarea,
+    .table td input,
+    .table td select,
+    .table td textarea {
+        font-size: 12px !important;
+        padding: 8px 10px !important;
+        min-height: 38px !important;
+    }
+}
+
+/* Exclude Production Module */
+.production-module table,
+.production-module .table,
+.production-module #dataTables-example,
+[class*="production"] table,
+[class*="production"] .table {
+    /* Production tables will use their own styling */
+    background: unset !important;
+    border-radius: unset !important;
+    box-shadow: unset !important;
+}
+
+.production-module table th,
+.production-module .table th,
+[class*="production"] table th,
+[class*="production"] .table th {
+    background: unset !important;
+    color: unset !important;
+}
+
+/* Override for specific production pages */
+body.production-page table,
+body.production-page .table,
+.production-content table,
+.production-content .table {
+    background: unset !important;
+    border-radius: unset !important;
+    box-shadow: unset !important;
+}
+
+body.production-page table th,
+body.production-page .table th,
+.production-content table th,
+.production-content .table th {
+    background: unset !important;
+    color: unset !important;
+}

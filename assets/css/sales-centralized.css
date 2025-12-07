@@ -1,0 +1,4 @@
+/* Centralized CSS for all sales view pages */
+@import url('admin-sales-common.css');
+@import url('chosen/chosen.css');
+/* Add any additional shared sales styles below */

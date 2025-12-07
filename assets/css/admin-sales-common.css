@@ -1,0 +1,1068 @@
+/* Custom header background for view_customer table */
+.customer-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%) !important;
+    color: #fff !important;
+    border: none !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    padding: 12px 8px !important;
+    font-size: 12px !important;
+}
+/**
+ * Centralized CSS for Admin Sales, Admin Summary, and View Sales
+ * 
+ * This file contains all common styles for sales-related admin views
+ * to maintain consistency and reduce code duplication.
+ * 
+ * Used by:
+ * - admin_sales.php
+ * - admin_summery.php  
+ * - view_sales.php
+ * 
+ * @version 1.0
+ * @author ERP System
+ * @date 2024
+ */
+
+/* ===== GLOBAL SALES VIEW STYLING ===== */
+
+.admin-sales-view,
+.sales-summary,
+.view-sales {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* ===== MODERN FILTER PANEL STYLING ===== */
+
+.search_panel {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 25px;
+    border: 1px solid #e9ecef;
+}
+
+.search_header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin: 0;
+    padding: 20px 25px;
+    font-size: 18px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: none;
+}
+
+.search_conent {
+    padding: 25px;
+    background: #fafbfc;
+}
+
+.search_panel .row {
+    display: flex !important;
+    align-items: flex-end !important;
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+    margin: 0 0 15px 0 !important;
+}
+
+.search_panel .row > div {
+    margin-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 200px !important;
+    flex: 1 !important;
+}
+
+.search_panel .form-group {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    justify-content: flex-start !important;
+    margin-bottom: 0 !important;
+}
+
+.search_panel .control-label {
+    margin-bottom: 8px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #2c3e50 !important;
+    white-space: nowrap !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.search_panel .control-label::before {
+    content: "📋" !important;
+    font-size: 16px !important;
+    filter: grayscale(0.3) !important;
+}
+
+.search_panel .form-control,
+.search_panel select {
+    height: 45px !important;
+    padding: 12px 15px !important;
+    border: 2px solid #e1e5e9 !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-family: inherit !important;
+    line-height: 1.4 !important;
+    background-color: #fff !important;
+    color: #333 !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.search_panel select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>') !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 12px !important;
+    padding-right: 40px !important;
+    cursor: pointer !important;
+}
+
+.search_panel .form-control:focus,
+.search_panel select:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    outline: none !important;
+    background-color: #fafbfc !important;
+}
+
+.search_panel .form-control:hover,
+.search_panel select:hover {
+    border-color: #c1c7cd !important;
+}
+
+.search_panel .btn {
+    height: 45px !important;
+    padding: 12px 24px !important;
+    border-radius: 25px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    cursor: pointer !important;
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    min-width: 120px !important;
+    text-decoration: none !important;
+}
+
+.search_panel .btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4) !important;
+    background: linear-gradient(135deg, #34495e 0%, #2980b9 100%) !important;
+}
+
+.search_panel .btn::before {
+    content: "🔍" !important;
+    font-size: 16px !important;
+}
+
+/* ===== CHOSEN SELECT ENHANCEMENT ===== */
+
+.search_panel .chosen-container {
+    width: 100% !important;
+    font-size: 14px !important;
+    font-family: inherit !important;
+}
+
+.search_panel .chosen-container-single .chosen-single {
+    padding: 12px 14px !important;
+    border: 2px solid #e1e5e9 !important;
+    border-radius: 8px !important;
+    background: white !important;
+    height: 45px !important;
+    line-height: 21px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #333 !important;
+    font-size: 14px !important;
+}
+
+.search_panel .chosen-container-single .chosen-single:hover {
+    border-color: #c1c7cd !important;
+}
+
+.search_panel .chosen-container-single .chosen-single:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.search_panel .chosen-container-active.chosen-with-drop .chosen-single {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+.search_panel .chosen-drop {
+    border: 2px solid #667eea !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    z-index: 9999 !important;
+    margin-top: 5px !important;
+}
+
+/* ===== DATE INPUT ICONS ===== */
+
+.search_panel input[type="text"]#start_date,
+.search_panel input[type="text"]#end_date {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>') !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 16px !important;
+    padding-right: 40px !important;
+}
+
+/* ===== PROFESSIONAL BUTTON CONTAINER ===== */
+
+.button-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin-top: 20px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #dee2e6 !important;
+}
+
+.filter-buttons,
+.report-buttons {
+    display: flex !important;
+    gap: 15px !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+}
+
+/* ===== ENHANCED BUTTON STYLES ===== */
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%) !important;
+    color: white !important;
+    border: none !important;
+    height: 45px !important;
+    padding: 12px 24px !important;
+    border-radius: 25px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    min-width: 120px !important;
+    text-decoration: none !important;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #545b62 0%, #3d4449 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(108, 117, 125, 0.4) !important;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+    color: white !important;
+    border: none !important;
+    height: 45px !important;
+    padding: 12px 24px !important;
+    border-radius: 25px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    min-width: 120px !important;
+    text-decoration: none !important;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #218838 0%, #1ea085 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4) !important;
+}
+
+/* ===== DATATABLES ENHANCED STYLING ===== */
+
+.dataTables_wrapper {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Top Controls Styling */
+.top-controls {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 15px 20px;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.left-controls, .center-controls, .right-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Length Menu (Show entries dropdown) */
+.dataTables_length {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dataTables_length label {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 13px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dataTables_length select {
+    background: white;
+    border: 2px solid #007bff;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+/* Search Box Styling */
+.dataTables_filter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dataTables_filter label {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 13px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dataTables_filter input {
+    background: white;
+    border: 2px solid #28a745;
+    border-radius: 25px;
+    padding: 8px 16px;
+    font-size: 13px;
+    width: 250px;
+    transition: all 0.3s ease;
+    padding-left: 40px;
+}
+
+.dataTables_filter input:focus {
+    border-color: #20c997;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
+    outline: none;
+    width: 300px;
+}
+
+/* Bottom Controls Styling */
+.bottom-controls {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-top: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Info Styling */
+.dataTables_info {
+    color: #495057;
+    font-size: 13px;
+    font-weight: 500;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #90caf9;
+}
+
+/* Pagination Styling */
+.dataTables_paginate {
+    display: flex;
+    gap: 5px;
+}
+
+.dataTables_paginate .paginate_button {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 2px solid #dee2e6;
+    color: #495057 !important;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-width: 40px;
+    text-align: center;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    border-color: #0056b3;
+    color: white !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dataTables_paginate .paginate_button.current {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border-color: #20c997;
+    color: white !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* ===== TABLE STYLING ===== */
+
+/* Generic table styling for all sales tables */
+.sales-table,
+#admin_sales_table,
+#admin_summary_table,
+#sales_table {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sales-table thead th,
+#admin_sales_table thead th,
+#admin_summary_table thead th,
+#sales_table thead th {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: white;
+    border: none;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px 8px;
+    font-size: 12px;
+}
+
+.sales-table tbody td,
+#admin_sales_table tbody td,
+#admin_summary_table tbody td,
+#sales_table tbody td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #dee2e6;
+    vertical-align: middle;
+    transition: background-color 0.2s ease;
+}
+
+.sales-table tbody tr:hover,
+#admin_sales_table tbody tr:hover,
+#admin_summary_table tbody tr:hover,
+#sales_table tbody tr:hover {
+    background-color: #f0f8ff !important;
+    transform: scale(1.001);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sales-table tfoot th,
+#admin_sales_table tfoot th,
+#admin_summary_table tfoot th,
+#sales_table tfoot th {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    border: none;
+    font-weight: bold;
+    text-align: center;
+    padding: 12px 8px;
+    font-size: 13px;
+}
+
+/* ===== ENHANCED STYLING ELEMENTS ===== */
+
+/* Product columns styling */
+.product-header {
+    background-color: #f8f9fa !important;
+    color: #dc3545 !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    border: 2px solid #dee2e6 !important;
+}
+
+.product-cell {
+    color: #dc3545 !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border: 1px solid #dee2e6 !important;
+    background-color: #fff5f5 !important;
+}
+
+.product-cell:empty {
+    background-color: #f8f9fa !important;
+}
+
+/* Status badges */
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-paid {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-unpaid {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.status-approved {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.status-deleted {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Action buttons */
+.action-btn {
+    padding: 4px 8px;
+    margin: 0 2px;
+    border-radius: 4px;
+    font-size: 11px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background: #17a2b8;
+    color: white;
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-approve {
+    background: #28a745;
+    color: white;
+}
+
+.btn-print {
+    background: #6c757d;
+    color: white;
+}
+
+/* Financial columns styling */
+.amount-positive {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.amount-negative {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.amount-zero {
+    color: #6c757d;
+}
+
+/* ===== JQUERY UI DATEPICKER ENHANCEMENT ===== */
+
+.ui-datepicker {
+    z-index: 9999 !important;
+    margin-top: 5px !important;
+    border: 2px solid #667eea !important;
+    border-radius: 12px !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+    background: white !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+}
+
+.ui-datepicker .ui-datepicker-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px 10px 0 0 !important;
+    padding: 12px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+}
+
+.ui-datepicker .ui-datepicker-title {
+    color: white !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 32px !important;
+    height: 32px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.ui-datepicker .ui-datepicker-prev:hover,
+.ui-datepicker .ui-datepicker-next:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    transform: scale(1.1) !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar {
+    border-collapse: separate !important;
+    border-spacing: 2px !important;
+    padding: 10px !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar th {
+    background: #f8f9fa !important;
+    color: #667eea !important;
+    font-weight: 600 !important;
+    padding: 8px !important;
+    border-radius: 6px !important;
+    font-size: 12px !important;
+    text-transform: uppercase !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar td {
+    padding: 2px !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar td a {
+    display: block !important;
+    padding: 8px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    color: #333 !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+    border: 1px solid transparent !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar td a:hover {
+    background: #667eea !important;
+    color: white !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar .ui-datepicker-today a {
+    background: #ffeaa7 !important;
+    color: #2d3436 !important;
+    font-weight: 600 !important;
+    border: 2px solid #fdcb6e !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar .ui-datepicker-current-day a,
+.ui-datepicker .ui-datepicker-calendar .ui-state-active {
+    background: #667eea !important;
+    color: white !important;
+    font-weight: 600 !important;
+    border: 2px solid #5a67d8 !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar .ui-datepicker-other-month a {
+    color: #bbb !important;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane {
+    background: #f8f9fa !important;
+    border-top: 1px solid #e9ecef !important;
+    border-radius: 0 0 10px 10px !important;
+    padding: 10px !important;
+    text-align: center !important;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane button {
+    background: #667eea !important;
+    color: white !important;
+    border: none !important;
+    padding: 6px 16px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    margin: 0 5px !important;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane button:hover {
+    background: #5a67d8 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+}
+
+/* ===== ENHANCED TABLE INTERACTIONS ===== */
+
+.table-hover-highlight {
+    background-color: #e3f2fd !important;
+    transform: scale(1.002) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+}
+
+/* Loading overlay */
+.dataTables_wrapper.loading::after {
+    content: "Loading...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+/* Search input animations */
+.form-control-search.clearing {
+    animation: clearPulse 0.3s ease-in-out;
+}
+
+@keyframes clearPulse {
+    0% { background-color: #fff3cd; }
+    50% { background-color: #ffeaa7; }
+    100% { background-color: white; }
+}
+
+.form-control-search.has-content {
+    background-color: #f0f8ff;
+    border-color: #007bff;
+}
+
+/* Table action buttons */
+.table-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-actions .btn {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* Badge styling */
+.badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+    .sales-table,
+    #admin_sales_table,
+    #admin_summary_table,
+    #sales_table {
+        font-size: 11px;
+    }
+    
+    .sales-table thead th,
+    .sales-table tbody td,
+    .sales-table tfoot th,
+    #admin_sales_table thead th,
+    #admin_sales_table tbody td,
+    #admin_sales_table tfoot th,
+    #admin_summary_table thead th,
+    #admin_summary_table tbody td,
+    #admin_summary_table tfoot th,
+    #sales_table thead th,
+    #sales_table tbody td,
+    #sales_table tfoot th {
+        padding: 6px 4px;
+    }
+    
+    .top-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .left-controls, .center-controls, .right-controls {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .dataTables_filter input {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .bottom-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .dataTables_paginate {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .search_panel .row {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    
+    .search_panel .row > div {
+        width: 100% !important;
+        min-width: unset !important;
+        flex: unset !important;
+    }
+    
+    .search_conent {
+        padding: 15px !important;
+    }
+    
+    .search_header {
+        padding: 15px 20px !important;
+        font-size: 16px !important;
+    }
+    
+    .search_panel .control-label {
+        font-size: 13px !important;
+    }
+    
+    .button-container {
+        flex-direction: column !important;
+        gap: 15px !important;
+        align-items: stretch !important;
+    }
+    
+    .filter-buttons,
+    .report-buttons {
+        justify-content: center !important;
+        width: 100% !important;
+    }
+    
+    .filter-buttons .btn,
+    .report-buttons .btn {
+        flex: 1 !important;
+        min-width: 140px !important;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+    .search_panel,
+    .no-print,
+    .dataTables_filter,
+    .dataTables_length,
+    .dataTables_paginate,
+    .dataTables_info,
+    .button-container {
+        display: none !important;
+    }
+    
+    .sales-table,
+    #admin_sales_table,
+    #admin_summary_table,
+    #sales_table {
+        box-shadow: none !important;
+        border: 1px solid #000 !important;
+    }
+    
+    .sales-table thead th,
+    #admin_sales_table thead th,
+    #admin_summary_table thead th,
+    #sales_table thead th {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+    }
+    
+    .sales-table tbody td,
+    #admin_sales_table tbody td,
+    #admin_summary_table tbody td,
+    #sales_table tbody td {
+        border: 1px solid #000 !important;
+    }
+}
+
+
+.ui-datepicker {
+    font-size: 13px !important;
+    border: 2px solid #667eea !important;
+    border-radius: 8px !important;
+    background: white !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
+    padding: 0 !important;
+    width: 280px !important;
+    max-width: 280px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* Critical: Force calendar to stay within container */
+.ui-datepicker .ui-datepicker-calendar {
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    margin: 8px !important;
+    box-sizing: border-box !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar thead,
+.ui-datepicker .ui-datepicker-calendar tbody {
+    width: 100% !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar th,
+.ui-datepicker .ui-datepicker-calendar td {
+    width: 14.28% !important; /* 100% / 7 days */
+    max-width: 14.28% !important;
+    box-sizing: border-box !important;
+    padding: 2px !important;
+    text-align: center !important;
+    overflow: hidden !important;
+}
+
+.ui-datepicker .ui-datepicker-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px 6px 0 0 !important;
+    padding: 10px !important;
+    text-align: center !important;
+}
+
+.ui-datepicker .ui-datepicker-title {
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+    background: rgba(255,255,255,0.2) !important;
+    border: none !important;
+    border-radius: 3px !important;
+    color: white !important;
+    width: 25px !important;
+    height: 25px !important;
+}
+
+.ui-datepicker .ui-datepicker-prev:hover,
+.ui-datepicker .ui-datepicker-next:hover {
+    background: rgba(255,255,255,0.3) !important;
+}
+
+.ui-datepicker table {
+    margin: 8px !important;
+    width: calc(100% - 16px) !important;
+    max-width: calc(100% - 16px) !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+}
+
+.ui-datepicker td a {
+    text-align: center !important;
+    padding: 4px 2px !important;
+    border-radius: 4px !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+}
+
+.ui-datepicker th {
+    text-align: center !important;
+    padding: 4px 2px !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    color: #667eea !important;
+}
+
+.ui-datepicker td a:hover {
+    background: #667eea !important;
+    color: white !important;
+}
+
+.ui-datepicker .ui-datepicker-today a {
+    background: #ffeaa7 !important;
+    color: #2d3436 !important;
+    font-weight: bold !important;
+}
+
+.ui-datepicker .ui-state-active {
+    background: #667eea !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+/* Add clear button next to input fields */
+.date-clear-btn {
+    margin-left: 5px !important;
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    background: #dc3545 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 3px !important;
+    cursor: pointer !important;
+}
+
+.date-clear-btn:hover {
+    background: #c82333 !important;
+}

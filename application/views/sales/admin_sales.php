@@ -48,7 +48,7 @@
                                             <td>
                                                 <label for="text1" class="control-label col-lg-4">Select Party</label>
                                                 <select id="customer_id" class="chosen-select"
-                                                    style="height:500px !important;" name="customer_id">
+                                                    name="customer_id">
                                                     <option value="0">-Select Party-</option>
                                                     <?php foreach($customer as $pr){ ?>
                                                     <option <?php if($pr['id']==$customer_id){ ?> selected="selected"

@@ -1,4 +1,3 @@
-    
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
@@ -1307,7 +1306,6 @@ class Production extends CI_Controller
         $this->data = [
             'start_date' => '',
             'end_date' => '',
-            'labour_group_filter' => '',
             'report_data' => [],
             'total_summary' => [
                 'total_quantity' => 0,
@@ -1319,278 +1317,23 @@ class Production extends CI_Controller
                 'grand_total_amount' => 0
             ]
         ];
-        // Get all labour groups for dropdown
-        $this->data['labour_groups'] = $this->Labour_group_model->get_labour_groups();
         
         // Check if form is submitted
         if ($this->input->post()) {
             $start_date = $this->input->post('start_date');
             $end_date = $this->input->post('end_date');
-            $labour_group_filter = $this->input->post('labour_group_filter');
+            
             $this->data['start_date'] = $start_date;
             $this->data['end_date'] = $end_date;
-            $this->data['labour_group_filter'] = $labour_group_filter;
+            
             if (!empty($start_date) && !empty($end_date)) {
-                $this->data['report_data'] = $this->_getProductionReportData($start_date, $end_date, $branch_id, $labour_group_filter);
+                $this->data['report_data'] = $this->_getProductionReportData($start_date, $end_date, $branch_id);
+             
                 $this->data['total_summary'] = $this->_calculateReportSummary($this->data['report_data']);
             }
         }
       
         $this->_loadView('admin/production/production_report');
-    }
-
-    /**
-     * Display production report grouped by product with date filtering
-     * Shows production quantities and amounts by product for the selected date range
-     * 
-     * @return void
-     */
-    public function product_production_report()
-    {
-        $branch_id = $this->session->userdata('branch_id');
-        
-        // Initialize data
-        $this->data = [
-            'start_date' => '',
-            'end_date' => '',
-            'product_filter' => '',
-            'report_data' => [],
-            'total_summary' => [
-                'total_quantity' => 0,
-                'total_amount' => 0,
-                'total_loading_qty' => 0,
-                'total_loading_amount' => 0,
-                'total_unloading_qty' => 0,
-                'total_unloading_amount' => 0,
-                'grand_total' => 0
-            ]
-        ];
-        
-        // Check if form is submitted
-        if ($this->input->post()) {
-            $start_date = $this->input->post('start_date');
-            $end_date = $this->input->post('end_date');
-            $product_filter = $this->input->post('product_filter');
-            
-            $this->data['start_date'] = $start_date;
-            $this->data['end_date'] = $end_date;
-            $this->data['product_filter'] = $product_filter;
-            
-            if (!empty($start_date) && !empty($end_date)) {
-                $this->data['report_data'] = $this->_getProductWiseReportData($start_date, $end_date, $branch_id, $product_filter);
-                $this->data['total_summary'] = $this->_calculateProductWiseSummary($this->data['report_data']);
-            }
-        }
-        
-        // Get all products for filter dropdown
-        $this->data['products'] = $this->production_model->get_product();
-      
-        $this->_loadView('admin/production/product_production_report');
-    }
-
-    /**
-     * Get production report data grouped by product
-     * 
-     * @param string $start_date Start date in dd-mm-yyyy format
-     * @param string $end_date End date in dd-mm-yyyy format
-     * @param int $branch_id Branch ID
-     * @param string $product_filter Optional product name filter
-     * @return array Report data organized by product
-     */
-    private function _getProductWiseReportData($start_date, $end_date, $branch_id, $product_filter = '')
-    {
-        // Format dates for database query
-        $start_formatted = date('Y-m-d', strtotime($start_date));
-        $end_formatted = date('Y-m-d', strtotime($end_date));
-        
-        // Get all production items within the date range
-        $sql = "SELECT 
-                    pi.id,
-                    pi.production_id,
-                    pi.product_id,
-                    pi.quantity,
-                    pi.rate,
-                    pi.amount,
-                    p.name as product_name,
-                    pr.date as production_date,
-                    pr.sheet_no
-                FROM prod_item pi
-                INNER JOIN product p ON pi.product_id = p.id
-                INNER JOIN production pr ON pi.production_id = pr.id
-                WHERE pr.branch_id = ? 
-                AND pr.is_deleted = 0 
-                AND pi.is_deleted = 0
-                AND pr.year_id = ? 
-                AND pr.date BETWEEN ? AND ?
-                ORDER BY p.name ASC, pr.date ASC";
-        
-        $params = [$branch_id, $this->_getYearId(), $start_formatted, $end_formatted];
-        $query = $this->db->query($sql, $params);
-        $production_items = $query->result_array();
-        
-        // Group items by product
-        $products_data = [];
-        foreach ($production_items as $item) {
-            $product_name = $item['product_name'];
-            
-            // Apply product filter if provided
-            if (!empty($product_filter) && $product_name !== $product_filter) {
-                continue;
-            }
-            
-            if (!isset($products_data[$product_name])) {
-                $products_data[$product_name] = [
-                    'product_name' => $product_name,
-                    'product_id' => $item['product_id'],
-                    'items' => [],
-                    'total_quantity' => 0,
-                    'total_amount' => 0,
-                    'loading_qty' => 0,
-                    'loading_amount' => 0,
-                    'unloading_qty' => 0,
-                    'unloading_amount' => 0
-                ];
-            }
-            
-            $products_data[$product_name]['items'][] = $item;
-            $products_data[$product_name]['total_quantity'] += (float)$item['quantity'];
-            $products_data[$product_name]['total_amount'] += (float)$item['amount'];
-        }
-        
-        // Get loading data grouped by product
-        $loading_sql = "SELECT 
-                            t.id,
-                            t.production_id,
-                            t.product_id,
-                            t.quantity,
-                            t.rate,
-                            t.amount,
-                            t.unit,
-                            p.name as product_name,
-                            pr.date as production_date,
-                            pr.sheet_no
-                        FROM transport t
-                        INNER JOIN product p ON t.product_id = p.id
-                        INNER JOIN production pr ON t.production_id = pr.id
-                        WHERE pr.branch_id = ? 
-                        AND t.type = 'loading'
-                        AND t.is_deleted = 0
-                        AND pr.is_deleted = 0
-                        AND pr.year_id = ? 
-                        AND pr.date BETWEEN ? AND ?
-                        ORDER BY p.name ASC, pr.date ASC";
-        
-        $loading_query = $this->db->query($loading_sql, $params);
-        $loading_items = $loading_query->result_array();
-        
-        foreach ($loading_items as $item) {
-            $product_name = $item['product_name'];
-            
-            // Apply product filter if provided
-            if (!empty($product_filter) && $product_name !== $product_filter) {
-                continue;
-            }
-            
-            if (!isset($products_data[$product_name])) {
-                $products_data[$product_name] = [
-                    'product_name' => $product_name,
-                    'product_id' => $item['product_id'],
-                    'items' => [],
-                    'total_quantity' => 0,
-                    'total_amount' => 0,
-                    'loading_qty' => 0,
-                    'loading_amount' => 0,
-                    'unloading_qty' => 0,
-                    'unloading_amount' => 0
-                ];
-            }
-            
-            $products_data[$product_name]['loading_qty'] += (float)$item['quantity'];
-            $products_data[$product_name]['loading_amount'] += (float)$item['amount'];
-        }
-        
-        // Get unloading data grouped by product
-        $unloading_sql = "SELECT 
-                            u.id,
-                            u.production_id,
-                            u.material_id,
-                            u.qty,
-                            u.rate,
-                            u.amount,
-                            u.unit,
-                            m.name as material_name,
-                            pr.date as production_date,
-                            pr.sheet_no
-                        FROM fly_ash_unloading u
-                        INNER JOIN material m ON u.material_id = m.id
-                        INNER JOIN production pr ON u.production_id = pr.id
-                        WHERE pr.branch_id = ? 
-                        AND u.is_deleted = 0
-                        AND pr.is_deleted = 0
-                        AND pr.year_id = ? 
-                        AND pr.date BETWEEN ? AND ?
-                        ORDER BY m.name ASC, pr.date ASC";
-        
-        $unloading_query = $this->db->query($unloading_sql, $params);
-        $unloading_items = $unloading_query->result_array();
-        
-        // Create material/product summary for unloading
-        foreach ($unloading_items as $item) {
-            $material_name = $item['material_name'];
-            
-            // For unloading, use material as product identifier
-            if (!isset($products_data[$material_name])) {
-                $products_data[$material_name] = [
-                    'product_name' => $material_name . ' (Unloading)',
-                    'material_id' => $item['material_id'],
-                    'items' => [],
-                    'total_quantity' => 0,
-                    'total_amount' => 0,
-                    'loading_qty' => 0,
-                    'loading_amount' => 0,
-                    'unloading_qty' => 0,
-                    'unloading_amount' => 0
-                ];
-            }
-            
-            $products_data[$material_name]['unloading_qty'] += (float)$item['qty'];
-            $products_data[$material_name]['unloading_amount'] += (float)$item['amount'];
-        }
-        
-        return array_values($products_data);
-    }
-
-    /**
-     * Calculate product-wise report summary totals
-     * 
-     * @param array $report_data Report data array
-     * @return array Summary totals
-     */
-    private function _calculateProductWiseSummary($report_data)
-    {
-        $summary = [
-            'total_quantity' => 0,
-            'total_amount' => 0,
-            'total_loading_qty' => 0,
-            'total_loading_amount' => 0,
-            'total_unloading_qty' => 0,
-            'total_unloading_amount' => 0,
-            'grand_total' => 0
-        ];
-        
-        foreach ($report_data as $product) {
-            $summary['total_quantity'] += $product['total_quantity'];
-            $summary['total_amount'] += $product['total_amount'];
-            $summary['total_loading_qty'] += $product['loading_qty'];
-            $summary['total_loading_amount'] += $product['loading_amount'];
-            $summary['total_unloading_qty'] += $product['unloading_qty'];
-            $summary['total_unloading_amount'] += $product['unloading_amount'];
-        }
-        
-        // Grand total is sum of all amounts
-        $summary['grand_total'] = $summary['total_amount'] + $summary['total_loading_amount'] + $summary['total_unloading_amount'];
-        
-        return $summary;
     }
 
     /**
@@ -1601,7 +1344,7 @@ class Production extends CI_Controller
      * @param int $branch_id Branch ID
      * @return array Report data
      */
-    private function _getProductionReportData($start_date, $end_date, $branch_id, $labour_group_filter = '')
+    private function _getProductionReportData($start_date, $end_date, $branch_id)
     {
         // Format dates for database query
         $start_formatted = date('Y-m-d', strtotime($start_date));
@@ -1639,12 +1382,6 @@ class Production extends CI_Controller
 
             // Get unloading items from fly_ash_unloading table  
             $unloading_items = $this->_getUnloadingItems($production['id']);
-            // If labour_group_filter is set, filter unloading_items by labour_group_id (integer)
-            if (!empty($labour_group_filter) && !empty($unloading_items)) {
-                $unloading_items = array_filter($unloading_items, function($item) use ($labour_group_filter) {
-                    return isset($item['labour_group_id']) && (string)$item['labour_group_id'] === (string)$labour_group_filter;
-                });
-            }
             
             // Prepare production data
             $production_data = [
@@ -1721,98 +1458,6 @@ class Production extends CI_Controller
         }
         
         return $summary;
-    }
-
-    /**
-     * Product Loading/Unloading Report by Labour Group and Date
-     */
-    public function product_loading_unloading_report()
-    {
-        $branch_id = $this->session->userdata('branch_id');
-        $this->data['start_date'] = '';
-        $this->data['end_date'] = '';
-        $this->data['labour_group_filter'] = '';
-        $this->data['labour_groups'] = $this->Labour_group_model->get_labour_groups();
-        $this->data['report_data'] = [];
-        $this->data['labour_group_name'] = '';
-
-        if ($this->input->post()) {
-            $start_date = $this->input->post('start_date');
-            $end_date = $this->input->post('end_date');
-            $labour_group_filter = $this->input->post('labour_group_filter');
-            $this->data['start_date'] = $start_date;
-            $this->data['end_date'] = $end_date;
-            $this->data['labour_group_filter'] = $labour_group_filter;
-            if (!empty($labour_group_filter)) {
-                foreach ($this->data['labour_groups'] as $g) {
-                    if ($g['id'] == $labour_group_filter) {
-                        $this->data['labour_group_name'] = $g['name'];
-                        break;
-                    }
-                }
-            }
-            if (!empty($start_date) && !empty($end_date)) {
-                $this->data['report_data'] = $this->_getProductLoadingUnloadingReportData($start_date, $end_date, $branch_id, $labour_group_filter);
-            }
-        }
-        $this->_loadView('admin/production/product_loading_unloading_report');
-    }
-
-    /**
-     * Helper: Get product loading/unloading data grouped by product, filtered by labour group and date
-     */
-    private function _getProductLoadingUnloadingReportData($start_date, $end_date, $branch_id, $labour_group_filter = '')
-    {
-        $start_formatted = date('Y-m-d', strtotime($start_date));
-        $end_formatted = date('Y-m-d', strtotime($end_date));
-        $year_id = $this->_getYearId();
-        $report = [];
-
-        // Loading: join transport t with production pr and product p
-        $this->db->select('t.*, p.name as product_name, pr.date as production_date');
-        $this->db->from('transport t');
-        $this->db->join('product p', 't.product_id = p.id', 'left');
-        $this->db->join('production pr', 't.production_id = pr.id', 'left');
-        $this->db->where('t.branch_id', $branch_id);
-        $this->db->where('t.is_deleted', 0);
-        $this->db->where('t.year_id', $year_id);
-        $this->db->where('pr.date >=', $start_formatted);
-        $this->db->where('pr.date <=', $end_formatted);
-        $this->db->where('pr.is_deleted', 0);
-        if (!empty($labour_group_filter)) {
-            $this->db->where('t.labour_group_id', $labour_group_filter);
-        }
-        $loading = $this->db->get()->result_array();
-
-        // Unloading: join fly_ash_unloading u with production pr, product p, material m
-        $this->db->select('u.*,m.name as product_name, m.name as material_name, pr.date as production_date');
-        $this->db->from('fly_ash_unloading u');
-        // $this->db->join('product p', 'u.product_id = p.id', 'left');
-        $this->db->join('material m', 'u.material_id = m.id', 'left');
-        $this->db->join('production pr', 'u.production_id = pr.id', 'left');
-        $this->db->where('u.branch_id', $branch_id);
-        $this->db->where('u.is_deleted', 0);
-        $this->db->where('u.year_id', $year_id);
-        $this->db->where('pr.date >=', $start_formatted);
-        $this->db->where('pr.date <=', $end_formatted);
-        $this->db->where('pr.is_deleted', 0);
-        if (!empty($labour_group_filter)) {
-            $this->db->where('u.labour_group_id', $labour_group_filter);
-        }
-        $unloading = $this->db->get()->result_array();
-
-        // Group by product
-        foreach ($loading as $row) {
-            $pname = $row['product_name'] ?: 'Unknown';
-            if (!isset($report[$pname])) $report[$pname] = ['loading' => [], 'unloading' => []];
-            $report[$pname]['loading'][] = $row;
-        }
-        foreach ($unloading as $row) {
-            $pname = $row['product_name'] ?: 'Unknown';
-            if (!isset($report[$pname])) $report[$pname] = ['loading' => [], 'unloading' => []];
-            $report[$pname]['unloading'][] = $row;
-        }
-        return $report;
     }
 
 }

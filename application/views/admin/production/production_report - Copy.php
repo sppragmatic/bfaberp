@@ -100,12 +100,25 @@
                                             </div>
                                             <div class="span3">
                                                 <div class="form-group">
-                                                    <label for="labour_group_filter" class="control-label">Labour Group</label>
-                                                    <select name="labour_group_filter" id="labour_group_filter" class="form-control">
-                                                        <option value="">All Labour Groups</option>
-                                                        <?php foreach ($labour_groups as $group): ?>
-                                                            <option value="<?php echo $group['id']; ?>" <?php echo (isset($labour_group_filter) && $labour_group_filter === $group['id']) ? 'selected' : ''; ?>>
-                                                                <?php echo htmlspecialchars($group['name']); ?>
+                                                    <label for="product_filter" class="control-label">Product</label>
+                                                    <select name="product_filter" id="product_filter" class="form-control">
+                                                        <option value="">All Products</option>
+                                                        <?php 
+                                                        // Get unique products from report data if available
+                                                        $products = array();
+                                                        if (!empty($report_data)) {
+                                                            foreach ($report_data as $production) {
+                                                                if (!empty($production['items'])) {
+                                                                    foreach ($production['items'] as $item) {
+                                                                        $products[$item['product_name']] = $item['product_name'];
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        ksort($products);
+                                                        foreach ($products as $product_name): ?>
+                                                            <option value="<?php echo htmlspecialchars($product_name); ?>" <?php echo (isset($_POST['product_filter']) && $_POST['product_filter'] === $product_name) ? 'selected' : ''; ?>>
+                                                                <?php echo htmlspecialchars($product_name); ?>
                                                             </option>
                                                         <?php endforeach; ?>
                                                     </select>
@@ -122,7 +135,7 @@
                             </div>
                             
                             <?php if (!empty($report_data)): ?>
-                                <!-- Overall Summary (Loading & Unloading Only) -->
+                                <!-- Overall Summary (Moved to Top) -->
                                 <div class="overall-summary" style="background-color: #f8f9fa; padding: 0; margin: 0; border: 2px solid #0066cc; page-break-after: always;">
                                     <h4 style="color: #0066cc; text-align: center; margin-bottom: 20px;">OVERALL SUMMARY</h4>
                                     <div style="text-align:center; margin-bottom:0; font-size:1.1rem; color:#1976d2;">
@@ -131,18 +144,22 @@
                                             ? date('d-m-Y', strtotime($start_date)) . ' to ' . date('d-m-Y', strtotime($end_date))
                                             : 'All Dates'; ?>
                                         <?php echo (isset($_POST['product_filter']) && !empty($_POST['product_filter'])) ? ' - Product: ' . htmlspecialchars($_POST['product_filter']) : ''; ?>
-                                                                        <?php echo (isset($labour_group_filter) && !empty($labour_group_filter)) ? ' - Labour Group: ' . htmlspecialchars($labour_group_filter) : ''; ?>
                                     </div>
                                     <div style="overflow-x:auto; margin:0; padding:0;">
                                         <table style="width:100%; background-color:white; border-collapse:collapse; margin:0; padding:0;">
                                             <thead>
                                                 <tr>
+                                                    <th style="color:#28a745; text-align:center; border:1px solid #ddd; padding:10px;">Product Details</th>
                                                     <th style="color:#fd7e14; text-align:center; border:1px solid #ddd; padding:10px;">Loading</th>
                                                     <th style="color:#6f42c1; text-align:center; border:1px solid #ddd; padding:10px;">Unloading</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
+                                                    <td style="text-align:center; border:1px solid #ddd; padding:10px;">
+                                                        <strong>Total Quantity:</strong> <?php echo number_format($total_summary['total_quantity'], 2); ?><br>
+                                                        <strong>Total Amount:</strong> ₹<?php echo number_format($total_summary['total_amount'], 2); ?>
+                                                    </td>
                                                     <td style="text-align:center; border:1px solid #ddd; padding:10px;">
                                                         <strong>Total Quantity:</strong> <?php echo number_format($total_summary['loading_total_qty'], 2); ?><br>
                                                         <strong>Total Amount:</strong> ₹<?php echo number_format($total_summary['loading_total_amount'], 2); ?>
@@ -156,7 +173,7 @@
                                         </table>
                                     </div>
                                     <div class="grand-summary" style="background-color: #0066cc; color: white; padding: 0; margin: 0; text-align: center; border-radius: 0;">
-                                        <h4 style="margin: 0;">GRAND TOTAL AMOUNT: ₹<?php echo number_format($total_summary['loading_total_amount'] + $total_summary['unloading_total_amount'], 2); ?></h4>
+                                        <h4 style="margin: 0;">GRAND TOTAL AMOUNT: ₹<?php echo number_format($total_summary['grand_total_amount'], 2); ?></h4>
                                     </div>
                                 </div>
                                 <!-- Report Results -->
@@ -164,7 +181,68 @@
                                     <h4>Production Report: <?php echo date('d-m-Y', strtotime($start_date)) . ' to ' . date('d-m-Y', strtotime($end_date)); ?></h4>
                                     <?php foreach ($report_data as $production_data): ?>
                                         <div class="production-section" style="margin-bottom: 30px; border: 1px solid #ddd; padding: 15px;">
-                                            <!-- Only Loading and Unloading Sections Shown -->
+                                            <!-- Production Header -->
+                                            <div class="production-header" style="background-color: #f8f9fa; padding: 10px; margin-bottom: 15px;">
+                                                <h5 style="margin: 0;">
+                                                    Sheet No: <?php echo htmlspecialchars($production_data['production']['sheet_no']); ?> | 
+                                                    Date: <?php echo date('d-m-Y', strtotime($production_data['production']['date'])); ?>
+                                                    | Products Amount: ₹<?php echo number_format($production_data['production']['prod_amount'] ?? 0, 2); ?>
+                                                    <?php if (!empty($production_data['production']['grand_total'])): ?>
+                                                        | Grand Total: ₹<?php echo number_format($production_data['production']['grand_total'], 2); ?>
+                                                    <?php endif; ?>
+                                                </h5>
+                                            </div>
+                                            
+                                            <!-- Product Details Table -->
+                                            <?php 
+                                            $filtered_items = $production_data['items'];
+                                            if (isset($_POST['product_filter']) && !empty($_POST['product_filter'])) {
+                                                $filtered_items = array_filter($filtered_items, function($item) {
+                                                    return $item['product_name'] === $_POST['product_filter'];
+                                                });
+                                            }
+                                            ?>
+                                            <?php if (!empty($filtered_items)): ?>
+                                                <div class="product-section">
+                                                    <h6 style="color: #0066cc; font-weight: bold;">
+                                                        PRODUCT DETAILS 
+                                                        <span style="float: right;">
+                                                            Total Qty: <?php echo number_format(array_sum(array_column($filtered_items, 'quantity')), 2); ?> | 
+                                                            Total: ₹<?php echo number_format(array_sum(array_column($filtered_items, 'amount')), 2); ?>
+                                                        </span>
+                                                    </h6>
+                                                    <table class="table table-striped table-bordered table-condensed">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Product Name</th>
+                                                                <th>Quantity</th>
+                                                                <th>Rate</th>
+                                                                <th>Amount</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php foreach ($filtered_items as $item): ?>
+                                                                <?php if ((float)$item['quantity'] > 0): ?>
+                                                                    <tr>
+                                                                        <td><?php echo htmlspecialchars($item['product_name']); ?></td>
+                                                                        <td><?php echo number_format($item['quantity'], 2); ?></td>
+                                                                        <td>₹<?php echo number_format($item['rate'], 2); ?></td>
+                                                                        <td>₹<?php echo number_format($item['amount'], 2); ?></td>
+                                                                    </tr>
+                                                                <?php endif; ?>
+                                                            <?php endforeach; ?>
+                                                        </tbody>
+                                                        <tfoot class="total-row" style="background-color: #f5f5f5; font-weight: bold;">
+                                                            <tr>
+                                                                <td>TOTAL:</td>
+                                                                <td><?php echo number_format(array_sum(array_column($filtered_items, 'quantity')), 2); ?></td>
+                                                                <td>-</td>
+                                                                <td>₹<?php echo number_format(array_sum(array_column($filtered_items, 'amount')), 2); ?></td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            <?php endif; ?>
                                             
                             <!-- Loading Section -->
                             <?php if (!empty($production_data['loading_items'])): ?>
@@ -190,7 +268,7 @@
                                             <?php foreach ($production_data['loading_items'] as $loading): ?>
                                                 <?php if ((float)($loading['quantity'] ?? 0) > 0): ?>
                                                     <tr>
-                                                        <td><?php echo htmlspecialchars($loading['product_name'] ?? 'N/A'); ?></td>                                                      
+                                                        <td><?php echo htmlspecialchars($loading['product_name'] ?? 'N/A'); ?></td>                                                       
                                                         <td><?php echo number_format($loading['quantity'] ?? 0, 2); ?></td>
                                                          <td><?php echo htmlspecialchars($loading['unit'] ?? ''); ?></td>
                                                         <td>₹<?php echo number_format($loading['rate'] ?? 0, 2); ?></td>
@@ -263,7 +341,22 @@
                             <?php endif; ?>
                             
                             <!-- Production Day Total -->
-                            <!-- No Production Day Total, only loading/unloading shown -->
+                            <?php 
+                                $product_amount = $production_data['product_total_amount'] ?? 0;
+                                $loading_amount = $production_data['loading_total_amount'] ?? 0;
+                                $unloading_amount = $production_data['unloading_total_amount'] ?? 0;
+                                $day_total = $product_amount + $loading_amount + $unloading_amount; 
+                            ?>
+                            <div class="day-total" style="background-color: #e9f4ff; padding: 10px; margin-top: 10px; border-radius: 5px;">
+                                <h6 style="margin: 0; color: #0066cc; font-weight: bold;">
+                                    DAY TOTAL: ₹<?php echo number_format($day_total, 2); ?>
+                                    <span style="font-size: 12px; font-weight: normal; margin-left: 15px;">
+                                        (Products: ₹<?php echo number_format($product_amount, 2); ?> + 
+                                        Loading: ₹<?php echo number_format($loading_amount, 2); ?> + 
+                                        Unloading: ₹<?php echo number_format($unloading_amount, 2); ?>)
+                                    </span>
+                                </h6>
+                            </div>
                                         </div>
                                     <?php endforeach; ?>
                                     

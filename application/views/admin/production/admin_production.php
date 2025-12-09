@@ -326,7 +326,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
-    overflow: hidden;
+    overflow: visible !important;
 }
 
 .widget-toolbar {
@@ -337,6 +337,7 @@
 .widget-filter-panel .widget-content {
     padding: 25px;
     background: #fafbfc;
+    overflow: visible !important;
 }
 
 /* Clean Filter Layout Styles */
@@ -383,14 +384,41 @@
 /* Chosen select overrides */
 .chosen-container {
     font-size: 13px;
+    z-index: 1000 !important;
 }
 
 .chosen-container-single .chosen-single {
-    height: 30px;
-    line-height: 28px;
-    border: 1px solid #ccc;
+    height: auto;
+    min-height: 36px;
+    line-height: 1.5;
+    border: 1px solid #ced4da;
     border-radius: 4px;
     background: #fff;
+    padding: 6px 12px;
+}
+
+.chosen-container .chosen-drop {
+    z-index: 1001 !important;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chosen-container .chosen-results {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.chosen-container .chosen-results li {
+    padding: 8px 12px;
+    line-height: 1.5;
+    white-space: normal;
+}
+
+.chosen-container .chosen-results li.highlighted {
+    background-color: #007bff;
+    color: #fff;
 }
 
 /* Form Control Enhancements */
@@ -615,14 +643,41 @@ select.input-medium {
 /* Chosen Select Overrides */
 .chosen-container {
     font-size: 14px;
+    z-index: 1000 !important;
 }
 
 .chosen-container-single .chosen-single {
-    height: 34px;
-    line-height: 32px;
+    height: auto;
+    min-height: 36px;
+    line-height: 1.5;
     border: 1px solid #ced4da;
     border-radius: 4px;
     background: #fff;
+    padding: 6px 12px;
+}
+
+.chosen-container .chosen-drop {
+    z-index: 1001 !important;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chosen-container .chosen-results {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.chosen-container .chosen-results li {
+    padding: 8px 12px;
+    line-height: 1.5;
+    white-space: normal;
+}
+
+.chosen-container .chosen-results li.highlighted {
+    background-color: #007bff;
+    color: #fff;
 }
 
 /* Filter Summary Styling */
@@ -968,6 +1023,24 @@ select.input-medium {
     border-radius: 4px;
     z-index: 11;
     font-size: 14px;
+}
+
+/* Ensure Chosen dropdown always appears on top */
+.chosen-container.chosen-container-active .chosen-drop {
+    z-index: 9999 !important;
+}
+
+.chosen-container .chosen-drop {
+    z-index: 9999 !important;
+    position: absolute;
+}
+
+.widget-filter-panel {
+    position: relative;
+}
+
+.widget-filter-panel .widget-content {
+    position: relative;
 }
 </style>
 

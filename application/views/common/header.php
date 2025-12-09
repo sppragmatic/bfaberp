@@ -335,8 +335,9 @@
                                         Production</span> </a></li>
                             <li><a href="<?= site_url('admin/production/create_production'); ?>"><span>Add
                                         Production</span> </a></li>
-                            <li><a href="<?= site_url('admin/production/production_report'); ?>"><span>Production Report</span> </a></li>
-
+                            <!-- <li><a href="<?= site_url('admin/production/production_report'); ?>"><span>Production Report</span> </a></li> -->
+  <li><a href="<?= site_url('admin/production/product_production_report'); ?>"><span> PRODUCTION REPORT</span> </a></li>
+                            <li><a href="<?= site_url('admin/production/product_loading_unloading_report'); ?>"><span> LOADING/UNLOADING REPORT</span> </a></li>
                         </ul>
                     </li>
                     <?php }  ?>
@@ -350,6 +351,8 @@
                             <li><a href="<?= site_url('admin/production/create_production'); ?>"><span>ADD
                                         PRODUCTION</span> </a></li>
                             <li><a href="<?= site_url('admin/production/production_report'); ?>"><span>PRODUCTION REPORT</span> </a></li>
+                            <li><a href="<?= site_url('admin/production/product_production_report'); ?>"><span> PRODUCTION REPORT</span> </a></li>
+                            <li><a href="<?= site_url('admin/production/product_loading_unloading_report'); ?>"><span>PRODUCT LOADING/UNLOADING REPORT</span> </a></li>
                         </ul>
                     </li>
 

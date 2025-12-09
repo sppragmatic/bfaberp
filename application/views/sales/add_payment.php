@@ -98,7 +98,7 @@ function get_course_ctgy_price(ctgy){
                       <th class="modern-table-header">Customer Name</th>
                       <td>
                         <div id="cid">
-                          <select id="customer_id" class="chosen-select modern-select" name="customer_id">
+                          <select id="customer_id" class="chosen-select" name="customer_id">
                             <option value="">-Select customer-</option>
                             <?php foreach($customer as $pr){ ?>
                             <option value="<?php echo $pr['id']; ?>"><?php echo $pr['name']; ?></option>
@@ -178,3 +178,4 @@ function get_course_ctgy_price(ctgy){
   	}
 
   </script>
+

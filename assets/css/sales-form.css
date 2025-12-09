@@ -296,7 +296,7 @@
 }
 
 .table-modern input,
-.table-modern select,
+
 .table-modern textarea {
     width: 100%;
     padding: 12px 14px;
@@ -314,39 +314,12 @@
 }
 
 /* Enhanced select box styling */
-.table-modern select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>');
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 12px;
-    padding-right: 40px;
-    cursor: pointer;
-    color: #333 !important;
-}
 
-/* Select option styling */
-.table-modern select option {
-    color: #333;
-    background-color: #fff;
-    padding: 8px 12px;
-    font-size: 14px;
-}
 
-/* Ensure placeholder/default options are visible */
-.table-modern select option[value=""] {
-    color: #6c757d;
-    font-style: italic;
-}
 
-.table-modern select::-ms-expand {
-    display: none;
-}
+
 
 .table-modern input:focus,
-.table-modern select:focus,
 .table-modern textarea:focus {
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -386,179 +359,15 @@
     height: 45px;
 }
 
-.table-modern select:not([multiple]) {
+/* .table-modern select:not([multiple]) {
     min-height: 45px;
     height: auto;
     line-height: 1.4;
     vertical-align: middle;
     display: flex;
     align-items: center;
-}
+} */
 
-/* Customer selection enhancement */
-.chosen-container {
-    width: 100% !important;
-    font-size: 14px !important;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-}
-
-.chosen-container-single .chosen-single {
-    padding: 12px 14px !important;
-    border: 1px solid #e1e5e9 !important;
-    border-radius: 6px !important;
-    background: white !important;
-    height: 45px !important;
-    line-height: 21px !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-    transition: all 0.3s ease !important;
-    min-height: 45px !important;
-    display: flex !important;
-    align-items: center !important;
-    color: #333 !important;
-    font-size: 14px !important;
-    box-sizing: border-box !important;
-}
-
-.chosen-container-single .chosen-single:hover {
-    border-color: #c1c7cd;
-}
-
-.chosen-container-active.chosen-with-drop .chosen-single {
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-    background-color: #fafbfc;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.chosen-container-single .chosen-single div {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 12px;
-    height: 12px;
-}
-
-.chosen-container-single .chosen-single div b {
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>') no-repeat center;
-    background-size: 12px;
-    width: 12px;
-    height: 12px;
-    display: block;
-}
-
-.chosen-container-single .chosen-single span {
-    margin-right: 30px !important;
-    display: flex !important;
-    align-items: center !important;
-    overflow: hidden !important;
-    white-space: nowrap !important;
-    text-overflow: ellipsis !important;
-    color: #333 !important;
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    line-height: 1.4 !important;
-    height: 100% !important;
-}
-
-/* Chosen dropdown list styling */
-.chosen-container .chosen-drop {
-    border: 2px solid #667eea !important;
-    border-top: 1px solid #e9ecef !important;
-    border-radius: 0 0 8px 8px !important;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
-    background: white !important;
-    z-index: 9999 !important;
-    margin-top: -1px !important;
-}
-
-/* Search highlight styling */
-.chosen-container .chosen-results li em {
-    background: #fff3cd !important;
-    color: #856404 !important;
-    font-style: normal !important;
-    font-weight: bold !important;
-    padding: 0 2px !important;
-    border-radius: 2px !important;
-}
-
-.chosen-container .chosen-results {
-    max-height: 250px !important;
-    overflow-y: auto !important;
-    font-size: 14px !important;
-}
-
-.chosen-container .chosen-results li {
-    padding: 12px 15px !important;
-    border-bottom: 1px solid #f1f3f4 !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease !important;
-    color: #333 !important;
-    font-size: 14px !important;
-    line-height: 1.4 !important;
-}
-
-.chosen-container .chosen-results li:hover,
-.chosen-container .chosen-results li.highlighted {
-    background-color: #667eea !important;
-    color: white !important;
-}
-
-.chosen-container .chosen-results li.result-selected {
-    background-color: #28a745 !important;
-    color: white !important;
-    font-weight: 600 !important;
-}
-
-/* FORCE search field to always appear - Critical CSS */
-.chosen-container .chosen-search {
-    display: block !important; /* Force search field to be visible */
-    visibility: visible !important;
-    opacity: 1 !important;
-    margin: 8px !important;
-    position: relative !important;
-    background: white !important;
-    border-radius: 10px !important;
-    padding: 0 !important;
-    min-height: 48px !important;
-}
-
-/* Ensure search field appears in dropdown */
-.chosen-container.chosen-with-drop .chosen-drop {
-    display: block !important;
-}
-
-.chosen-container.chosen-with-drop .chosen-drop .chosen-search {
-    display: block !important;
-    margin: 8px !important;
-}
-
-.chosen-container .chosen-search input[type="text"] {
-    width: calc(100% - 8px) !important;
-    padding: 12px 45px 12px 15px !important;
-    border: 2px solid #e9ecef !important;
-    border-radius: 10px !important;
-    font-size: 14px !important;
-    transition: all 0.3s ease !important;
-    background: white !important;
-    display: block !important;
-    box-sizing: border-box !important;
-    margin: 0 !important;
-    color: #333 !important;
-    min-height: 44px !important;
-}
-
-.chosen-container .chosen-search input[type="text"]:focus {
-    border-color: #3498db !important;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1) !important;
-    outline: none !important;
-}
-
-.chosen-container .chosen-search input[type="text"]::placeholder {
-    color: #6c757d !important;
-    opacity: 0.7 !important;
-}
 
 /* Contact validation styles */
 .validation-message {
@@ -663,18 +472,15 @@
 }
 
 /* Ensure the select element itself is visible */
-#customer_id {
+/* #customer_id {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
     width: 100% !important;
     min-height: 35px !important;
-}
+} */
 
-/* Hide new customer form by default */
-#cn {
-    display: none !important;
-}
+
 
 #cn .form-group,
 #cid .form-group {
@@ -728,9 +534,6 @@ a[onclick]:hover {
 }
 
 /* Hide any potential duplicate chosen containers */
-#cid .chosen-container:not(:first-child) {
-    display: none !important;
-}
 
 /* Required field indicator styling */
 th:contains('*') {
@@ -785,34 +588,7 @@ th:contains('*')::after {
     cursor: pointer;
 }
 
-/* Form control select styling */
-select.form-control {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>');
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 12px;
-    padding-right: 40px;
-    cursor: pointer;
-    min-height: 44px;
-}
 
-select.form-control::-ms-expand {
-    display: none;
-}
-
-select.form-control:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-    outline: none;
-    background-color: #fafbfc;
-}
-
-select.form-control:hover {
-    border-color: #c1c7cd;
-}
 
 /* Radio button styling */
 input[type="radio"] {
@@ -1033,7 +809,6 @@ input[type="number"]::-webkit-inner-spin-button {
     
     /* Form elements in mobile view for sales info table only */
     .sales-info-table input,
-    .sales-info-table select,
     .sales-info-table textarea {
         width: 100%;
         margin-top: 5px;
@@ -1049,12 +824,7 @@ input[type="number"]::-webkit-inner-spin-button {
         align-items: center;
     }
     
-    /* Mobile select options */
-    .sales-info-table select option {
-        color: #333 !important;
-        background-color: #fff !important;
-        font-size: 16px;
-    }
+
     
     /* Special handling for radio buttons in sales info table */
     .sales-info-table input[type="radio"] {
@@ -1175,7 +945,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 /* Modern Form Control Alignment Classes */
 .modern-input,
-.modern-select,
 .modern-textarea {
     width: 100% !important;
     height: 45px !important;
@@ -1205,19 +974,6 @@ input[type="number"]::-webkit-inner-spin-button {
     padding: 15px 14px !important;
 }
 
-/* Modern select specific styling */
-.modern-select {
-    appearance: none !important;
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>') !important;
-    background-repeat: no-repeat !important;
-    background-position: right 12px center !important;
-    background-size: 12px !important;
-    padding-right: 40px !important;
-    cursor: pointer !important;
-}
-
 /* Focus states for modern controls */
 .modern-input:focus,
 .modern-select:focus,
@@ -1240,13 +996,6 @@ input[type="number"]::-webkit-inner-spin-button {
     background-color: #f8f9fa !important;
     color: #6c757d !important;
     cursor: not-allowed !important;
-}
-
-/* Chosen select container alignment fix */
-.chosen-container.modern-select {
-    height: 45px !important;
-    min-height: 45px !important;
-    display: block !important;
 }
 
 /* Radio button group styling */
@@ -1450,19 +1199,7 @@ table td input[readonly],
     cursor: not-allowed !important;
 }
 
-/* Select Dropdowns in Tables */
-table td select,
-.table td select {
-    appearance: none !important;
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>') !important;
-    background-repeat: no-repeat !important;
-    background-position: right 12px center !important;
-    background-size: 12px !important;
-    padding-right: 40px !important;
-    cursor: pointer !important;
-}
+
 
 /* Textarea in Tables */
 table td textarea,
@@ -1546,14 +1283,14 @@ table td input[type="button"]:hover,
     margin: 10px 0 !important;
 }
 
-.dataTables_length select,
+/* .dataTables_length select,
 .dataTables_filter input {
     border: 1px solid #e1e5e9 !important;
     border-radius: 6px !important;
     padding: 8px 12px !important;
     font-size: 14px !important;
     margin: 0 5px !important;
-}
+} */
 
 /* Pagination Styling */
 .dataTables_paginate .paginate_button {
@@ -1620,10 +1357,10 @@ table td input[type="button"]:hover,
     }
     
     table td input,
-    table td select,
+
     table td textarea,
     .table td input,
-    .table td select,
+
     .table td textarea {
         font-size: 12px !important;
         padding: 8px 10px !important;

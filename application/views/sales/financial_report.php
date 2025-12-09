@@ -393,7 +393,7 @@ function unhighlightRow(row) {
     background: white !important;
     border-radius: 15px !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
-    overflow: hidden !important;
+    /* overflow: visible !important; */
     margin-bottom: 25px !important;
     border: 1px solid #e9ecef !important;
 }

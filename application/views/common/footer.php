@@ -28,6 +28,12 @@
   .footer a { color: #fff !important; }
 </style>
 
+<script src="<?php echo base_url()?>assets/validate/dist/jquery.validate.js"></script>
+<link rel="stylesheet" href="<?php echo base_url()?>assets/ui/jquery-ui.css" />
+<script src="<?php echo base_url()?>assets/ui/jquery-ui.js"></script>
+<script src="<?php echo base_url();?>assets/chosen/chosen.jquery.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>assets/datatable/jquery.dataTables.min.js" type="text/javascript"></script>
+
 <!-- JavaScript Libraries -->
 <script src="<?= base_url();?>assets/js/bootstrap.js"></script>
 <?php if (isset($load_datatables) && $load_datatables): ?>
@@ -48,24 +54,24 @@
 <?php endif; ?>
 <?php if (isset($load_chosen) && $load_chosen): ?>
   <script src="<?php echo base_url();?>assets/chosen/chosen.jquery.min.js"></script>
-  <script>
-    // Initialize Chosen selects on DOM ready
-    jQuery(function($) {
-      var config = {
-        '.chosen-select': {},
-        '.chosen-select-deselect': {allow_single_deselect:true},
-        '.chosen-select-no-single': {disable_search_threshold:10},
-        '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-        '.chosen-select-width': {width:"95%"}
-      };
-      for (var selector in config) {
-        if ($(selector).length > 0) {
-          $(selector).chosen(config[selector]);
-        }
-      }
-    });
-  </script>
 <?php endif; ?>
+
+<script>
+$(document).ready(function() {
+        // Initialize Chosen Select (after DOM and Chosen JS loaded)
+       var config = {
+    '.chosen-select': { width: "100%" },
+    '.chosen-select-deselect': { allow_single_deselect: true },
+    '.chosen-select-no-single': { disable_search_threshold: 10 },
+    '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+    '.chosen-select-width': { width: "95%" }
+  };
+  for (var selector in config) {
+    $(selector).chosen(config[selector]);
+  }
+    });
+    </script>
+
 </body>
 </html>
 

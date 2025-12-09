@@ -85,7 +85,7 @@ function get_course_ctgy_price(ctgy){
 								<tr><th>Name OF PURCHASE</th>
 					<td>
 					<div id="cid">
-					<select id="customer_id"    name="customer_id">
+					<select id="customer_id" class="chosen-select" name="customer_id">
 				<option value="">-Select customer-</option>
 				<?php foreach($customer as $pr){ ?>
 				<option  <?php if($sales['customer_id']==$pr['id']){ ?> selected="selected" <?php } ?>    value="<?php echo $pr['id']; ?>"><?php echo $pr['name']; ?></option>

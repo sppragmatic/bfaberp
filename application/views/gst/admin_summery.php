@@ -32,9 +32,10 @@ function PrintDiv() {
     background: white;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    /* overflow: hidden; */
     margin-bottom: 25px;
     border: 1px solid #e9ecef;
+    
 }
 
 .search_header,

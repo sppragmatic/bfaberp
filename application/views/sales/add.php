@@ -1,25 +1,9 @@
 
-<!-- Ensure jQuery is loaded before Chosen -->
-<script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
-<!-- Chosen CSS -->
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/chosen/chosen.min.css">
+
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/sales-form.css">
-<!-- Chosen JS -->
-<script src="<?php echo base_url(); ?>assets/chosen/chosen.jquery.min.js"></script>
 
 
 <script>
-function get_course_category(course_id) {
-    $.post("<?php echo site_url('admin/admission/get_course_category'); ?>", {
-        course_id: course_id
-    }, function(msg) {
-
-        $('#cr_ctg').html(msg);
-
-    });
-    //	alert(course_id)
-}
-
 function sdisp(st) {
     if (st == '1') {
         $(".pmdetails").show();
@@ -27,23 +11,6 @@ function sdisp(st) {
         $(".pmdetails").hide();
     }
 
-}
-
-function get_course_ctgy_price(ctgy) {
-    //alert($('#cr_ctg').val());
-    var course_id = $('#cr_cor').val();
-    var branch_id = $('#cr_br').val();
-
-    $.post("<?php echo site_url('admin/admission/get_course_ctgy_price'); ?>", {
-        course_id: course_id,
-        category_id: ctgy,
-        branch_id: branch_id
-    }, function(msg) {
-        //alert(msg)
-        $('#price').val(msg);
-
-    });
-    //	alert(course_id)
 }
 
 // Contact number validation functions
@@ -229,10 +196,12 @@ $().ready(function() {
                 <div class="span12">
                     <!-- Professional Page Header -->
                     <div class="page-header-card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                             <div>
                                 <h1>
-                                    <i class="icon-plus-circle" style="color: #3498db; margin-right: 12px; font-size: 32px;"></i>
+                                    <i class="icon-plus-circle"
+                                        style="color: #3498db; margin-right: 12px; font-size: 32px;"></i>
                                     Add New Sales
                                 </h1>
                                 <p>Create new sales record with customer details and product information</p>
@@ -269,8 +238,8 @@ $().ready(function() {
                                         <th>Name OF PURCHASE</th>
                                         <td>
                                             <div id="cid">
-                                               
-                                                <select id="customer_id" class="chosen-select" name="customer_id">
+
+                                                <select  id="customer_id"  class="chosen-select" name="customer_id">
                                                     <option value="">-Select customer-</option>
                                                     <?php foreach($customer as $pr){ ?>
                                                     <option value="<?php echo $pr['id']; ?>">
@@ -282,13 +251,16 @@ $().ready(function() {
                                                     <?php } ?>
                                                 </select>
                                                 <!-- <span style="padding-left: 30px"><a onclick="cn()"><i class="icon-plus"></i></a></span> -->
-                                            
-                                                
+
+
                                                 <!-- Search functionality info -->
-                                                <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 8px 12px; margin: 8px 0; border: 1px solid #2196f3; border-radius: 6px; box-shadow: 0 2px 4px rgba(33,150,243,0.1);">
-                                                    <small><strong><i class="icon-search" style="color: #1976d2;"></i> Search Feature:</strong> Click dropdown and type to search customers by name or contact number</small>
+                                                <div
+                                                    style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 8px 12px; margin: 8px 0; border: 1px solid #2196f3; border-radius: 6px; box-shadow: 0 2px 4px rgba(33,150,243,0.1);">
+                                                    <small><strong><i class="icon-search" style="color: #1976d2;"></i>
+                                                            Search Feature:</strong> Click dropdown and type to search
+                                                        customers by name or contact number</small>
                                                 </div>
-                                                
+
                                                 <!-- Commented out Add New Customer functionality -->
                                                 <!-- 
                                                 <span style="margin-left: 15px;">
@@ -298,56 +270,15 @@ $().ready(function() {
                                                 </span>
                                                 -->
                                             </div>
-
-                                            <!-- Commented out Add New Customer form section -->
-                                            <!-- 
-                                            <div id="cn" style="display: none; margin-top: 15px;">
-                                                <div class="row" style="margin: 0;">
-                                                    <div class="span6" style="margin-left: 0;">
-                                                        <div class="form-group">
-                                                            <label for="contact_no">Contact Number *</label>
-                                                            <div style="position: relative;">
-                                                                <input id="contact_no" name="contact_no" type="text"
-                                                                    class="form-control"
-                                                                    placeholder="Enter 10-15 digit mobile number" maxlength="15"
-                                                                    pattern="[0-9]{10,15}"
-                                                                    title="Please enter a valid 10-15 digit mobile number"
-                                                                    autocomplete="off">
-                                                                <small class="text-muted">
-                                                                    <i class="fa fa-info-circle"></i>
-                                                                    Enter mobile number to check if customer exists in party records
-                                                                </small>
-                                                            </div>
-                                                            <div id="contact_validation_message" class="validation-message mt-1"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="span6">
-                                                        <div class="form-group">
-                                                            <label for="customer_name">Customer Name *</label>
-                                                            <input id="customer_name" name="customer_name" type="text"
-                                                                class="form-control"
-                                                                placeholder="Customer name (auto-filled or enter manually)">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <input type="hidden" id="party_id" name="party_id">
-                                                <div style="text-align: right; margin-top: 10px;">
-                                                    <a onclick="cid()" class="btn-primary-gradient" style="padding: 6px 12px; font-size: 12px;">
-                                                        <i class="icon-minus"></i> Back to Customer List
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            -->
                                         </td>
                                     </tr>
 
-                                        <th>Payment Status</th>
-                                        <td><select id="payment_status" onchange="sdisp(this.value)"
-                                                name="payment_status">
-                                                <option value="">-Select Type-</option>
-                                                <option value="1">Paid</option>
-                                                <option value="2">Un Paid</option>
-                                            </select></td>
+                                    <th>Payment Status</th>
+                                    <td><select id="payment_status" onchange="sdisp(this.value)" name="payment_status">
+                                            <option value="">-Select Type-</option>
+                                            <option value="1">Paid</option>
+                                            <option value="2">Un Paid</option>
+                                        </select></td>
                                     </tr>
 
                                     <tr>
@@ -434,30 +365,30 @@ $().ready(function() {
                                                 step="0.01" readonly
                                                 style="background-color: #e9ecef; font-weight: bold;"></td>
                                     </tr>
-                                    
+
                                     <tr>
                                         <td colspan="3" align="right"><strong>Transportation Charge:</strong></td>
-                                        <td><input name="transportation_charge" id="transportation_charge" class="span2 charge-input" 
-                                                type="number" step="0.01" min="0" value="0"
-                                                onkeyup="calculateGrandTotal()" 
-                                                onchange="calculateGrandTotal()"
-                                                placeholder="0.00"></td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td colspan="3" align="right"><strong>Loading Charge:</strong></td>
-                                        <td><input name="loading_charge" id="loading_charge" class="span2 charge-input" 
-                                                type="number" step="0.01" min="0" value="0"
-                                                onkeyup="calculateGrandTotal()" 
-                                                onchange="calculateGrandTotal()"
+                                        <td><input name="transportation_charge" id="transportation_charge"
+                                                class="span2 charge-input" type="number" step="0.01" min="0" value="0"
+                                                onkeyup="calculateGrandTotal()" onchange="calculateGrandTotal()"
                                                 placeholder="0.00"></td>
                                     </tr>
 
-                                    <tr class="total-row" style="background-color: #f5f5f5; font-weight: bold; border-top: 2px solid #ddd;">
+                                    <tr>
+                                        <td colspan="3" align="right"><strong>Loading Charge:</strong></td>
+                                        <td><input name="loading_charge" id="loading_charge" class="span2 charge-input"
+                                                type="number" step="0.01" min="0" value="0"
+                                                onkeyup="calculateGrandTotal()" onchange="calculateGrandTotal()"
+                                                placeholder="0.00"></td>
+                                    </tr>
+
+                                    <tr class="total-row"
+                                        style="background-color: #f5f5f5; font-weight: bold; border-top: 2px solid #ddd;">
                                         <td colspan="3" align="right"><strong>GRAND TOTAL:</strong></td>
                                         <td><input name="total_amount" id="total_amount" class="span2" type="number"
                                                 step="0.01" readonly
-                                                style="font-weight: bold; background-color: #d4edda; border: 2px solid #c3e6cb; font-size: 16px;"></td>
+                                                style="font-weight: bold; background-color: #d4edda; border: 2px solid #c3e6cb; font-size: 16px;">
+                                        </td>
                                     </tr>
 
                                 </tbody>
@@ -481,11 +412,12 @@ $().ready(function() {
                         </div>
                     </div>
 
-                            </form>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script>
     $(function() {
@@ -579,7 +511,7 @@ $().ready(function() {
             subTotal += amount;
         });
         $('#sub_total').val(subTotal.toFixed(2));
-        
+
         // Calculate grand total including charges
         calculateGrandTotal();
     }
@@ -589,7 +521,7 @@ $().ready(function() {
         var subTotal = parseFloat($('#sub_total').val()) || 0;
         var transportationCharge = parseFloat($('#transportation_charge').val()) || 0;
         var loadingCharge = parseFloat($('#loading_charge').val()) || 0;
-        
+
         var grandTotal = subTotal + transportationCharge + loadingCharge;
         $('#total_amount').val(grandTotal.toFixed(2));
     }
@@ -629,7 +561,7 @@ $().ready(function() {
 
         // Calculate initial totals on page load
         calculateSubTotal();
-        
+
         // Format charge inputs to show proper decimal places
         $('.charge-input').on('blur', function() {
             var value = parseFloat($(this).val()) || 0;
@@ -637,23 +569,15 @@ $().ready(function() {
         });
     });
 
-$(document).ready(function() {
-    // Initialize Date Pickers (jQuery UI)
-    $("#start_date, #end_date").datepicker({
-        changeMonth: true,
-        changeYear: true,
-        dateFormat: 'dd-mm-yy'
-    });
-
-    // Initialize Chosen Select (after DOM and Chosen JS loaded)
-    if ($.fn.chosen) {
-        $(".chosen-select").chosen({
-            width: "100%",
-            no_results_text: "No results matched"
+    $(document).ready(function() {
+        // Initialize Date Pickers (jQuery UI)
+        $("#start_date, #end_date").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd-mm-yy'
         });
-    } else {
-        console.error('Chosen plugin not loaded.');
-    }
-});
-</script>
-   
+
+        // Initialize Chosen Select (after DOM and Chosen JS loaded)
+     
+    });
+    </script>

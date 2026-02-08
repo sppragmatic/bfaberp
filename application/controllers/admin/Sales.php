@@ -769,6 +769,7 @@ class Sales extends CI_Controller
             $acccond['invid'] = $sales['sl_no'];
             $accdata['credit'] = $toamount;
             $accdata['details'] = $this->input->post('paiddetails');
+            $accdata['customer_id'] = $this->input->post('customer_id');
             $payment_status = $this->input->post('payment_status');
             if ($payment_status == 1) {
                 $accdata['debit'] = $this->input->post('paid_amount');

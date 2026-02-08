@@ -199,16 +199,16 @@
                                             <td class="text-center">
                                                
                                                     <a href="<?php echo site_url('admin/production/edit_production/'.$fm['id']); ?>" 
-                                                       class="btn btn-sm btn-primary" title="Edit Production">
-                                                        <i class="icon-edit" style="font-size: 11px;"></i>
+                                                       title="Edit Production" style="background: none; border: none; padding: 4px; color: #007bff; cursor: pointer;">
+                                                        <i class="icon-edit" style="font-size: 15px;"></i>
                                                     </a>
                                                     <a href="<?php echo site_url('admin/production/view_production/'.$fm['id']); ?>" 
-                                                       class="btn btn-sm btn-info" title="View Details">
-                                                        <i class="icon-eye-open" style="font-size: 11px;"></i>
+                                                       title="View Details" style="background: none; border: none; padding: 4px; color: #17a2b8; cursor: pointer;">
+                                                        <i class="icon-eye-open" style="font-size: 15px;"></i>
                                                     </a>
                                                     <a onclick="confirmDelete(<?php echo $fm['id']; ?>)" 
-                                                       class="btn btn-sm btn-danger" style="cursor:pointer;" title="Delete Production">
-                                                        <i class="icon-trash" style="font-size: 11px;"></i>
+                                                       title="Delete Production" style="background: none; border: none; padding: 4px; color: #dc3545; cursor: pointer;">
+                                                        <i class="icon-trash" style="font-size: 15px;"></i>
                                                     </a>
                                                 
                                             </td>

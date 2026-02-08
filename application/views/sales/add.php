@@ -440,6 +440,15 @@ $().ready(function() {
             const contactNo = $('#contact_no').val();
             const customerName = $('#customer_name').val();
             const customerId = $('#customer_id').val();
+            const totalAmount = parseFloat($('#total_amount').val()) || 0;
+
+            // Validate total_amount > 0
+            if (totalAmount <= 0) {
+                e.preventDefault();
+                alert('Total amount must be greater than zero to submit the form.');
+                $('#total_amount').focus();
+                return false;
+            }
 
             if (isContactVisible) {
                 // Validate contact number when using manual entry
